@@ -1,0 +1,37 @@
+itemGroup.BouncingBalls=Bouncing Balls
+
+bouncing_balls.EggBouncingBall.tooltip=You need eggs as ammo
+bouncing_balls.SnowBouncingBall.tooltip=You need snowballs as ammo
+bouncing_balls.DynamiteBouncingBall.tooltip=You need gunpowder as ammo
+bouncing_balls.DynamiteBouncingBall.warning=WARNING This ball creates explosions
+
+item.BlackBouncingBall.name=Black Bouncing Ball
+item.RedBouncingBall.name=Red Bouncing Ball
+item.DarkGreenBouncingBall.name=Dark Green Bouncing Ball
+item.BrownBouncingBall.name=Brown Bouncing Ball
+item.BlueBouncingBall.name=Blue Bouncing Ball
+item.PurpleBouncingBall.name=Purple Bouncing Ball
+item.CyanBouncingBall.name=Cyan Bouncing Ball
+item.LightGrayBouncingBall.name=Light Gray Bouncing Ball
+item.GrayBouncingBall.name=Gray Bouncing Ball
+item.PinkBouncingBall.name=Pink Bouncing Ball
+item.GreenBouncingBall.name=Green Bouncing Ball
+item.YellowBouncingBall.name=Yellow Bouncing Ball
+item.LightBlueBouncingBall.name=Light Blue Bouncing Ball
+item.MagentaBouncingBall.name=Magenta Bouncing Ball
+item.OrangeBouncingBall.name=Orange Bouncing Ball
+item.WhiteBouncingBall.name=White Bouncing Ball
+
+item.EggBouncingBall.name=Egg Bouncing Ball
+item.SnowBouncingBall.name=Snow Bouncing Ball
+item.DynamiteBouncingBall.name=Dynamite Bouncing Ball
+item.SlimeBouncingBall.name=Slime Bouncing Ball
+item.ClayBouncingBall.name=Clay Bouncing Ball
+item.RedstoneBouncingBall.name=Redstone Bouncing Ball
+item.GlowstoneBouncingBall.name=Glowstone Bouncing Ball
+item.GoldenBouncingBall.name=Gold Bouncing Ball
+item.IronBouncingBall.name=Iron Bouncing Ball
+item.DiamondBouncingBall.name=Diamond Bouncing Ball
+item.ObsidianBouncingBall.name=Obsidian Bouncing Ball
+item.EmeraldBouncingBall.name=Emerald Bouncing Ball
+item.NetherStarBouncingBall.name=Nether Star Bouncing Ball

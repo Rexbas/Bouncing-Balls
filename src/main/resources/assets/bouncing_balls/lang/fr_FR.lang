@@ -1,0 +1,37 @@
+itemGroup.BouncingBalls=Rebondissant Balles
+
+bouncing_balls.EggBouncingBall.tooltip=Vous avez besoin de oeufs comme munitions
+bouncing_balls.SnowBouncingBall.tooltip=Vous avez besoin des boules de neige que des munitions
+bouncing_balls.DynamiteBouncingBall.tooltip=vous avez besoin de la poudre à canon que des munitions
+bouncing_balls.DynamiteBouncingBall.warning=ATTENTION Cette boule crée des explosions
+
+item.BlackBouncingBall.name=Noir Balle Rebondissant
+item.RedBouncingBall.name=Rouge Balle Rebondissant
+item.DarkGreenBouncingBall.name=Vert Foncé Balle Rebondissant
+item.BrownBouncingBall.name=Brun Balle Rebondissant
+item.BlueBouncingBall.name=Bleu Balle Rebondissant
+item.PurpleBouncingBall.name=Violette Balle Rebondissant
+item.CyanBouncingBall.name=Cyan Balle Rebondissant
+item.LightGrayBouncingBall.name=Gris Clair Balle Rebondissant
+item.GrayBouncingBall.name=Grise Balle Rebondissant
+item.PinkBouncingBall.name=Rose Balle Rebondissant
+item.GreenBouncingBall.name=Vert Balle Rebondissant
+item.YellowBouncingBall.name=Jaune Balle Rebondissant
+item.LightBlueBouncingBall.name=Bleu Clair Balle Rebondissant
+item.MagentaBouncingBall.name=Magenta Balle Rebondissant
+item.OrangeBouncingBall.name=Orange Balle Rebondissant
+item.WhiteBouncingBall.name=Blanc Balle Rebondissant
+
+item.EggBouncingBall.name=Oeuf Balle Rebondissant
+item.SnowBouncingBall.name=Neige Balle Rebondissant
+item.DynamiteBouncingBall.name=Dynamiter Balle Rebondissant
+item.SlimeBouncingBall.name=Slime Balle Rebondissant
+item.ClayBouncingBall.name=Argile Balle Rebondissant
+item.RedstoneBouncingBall.name=Redstone Balle Rebondissant
+item.GlowstoneBouncingBall.name=Pierre Luisante Balle Rebondissant
+item.GoldenBouncingBall.name=D'or Balle Rebondissant
+item.IronBouncingBall.name=Fer Balle Rebondissant
+item.DiamondBouncingBall.name=Diamant Balle Rebondissant
+item.ObsidianBouncingBall.name=Obsidienne Balle Rebondissant
+item.EmeraldBouncingBall.name=Émeraude Balle Rebondissant
+item.NetherStarBouncingBall.name=Étoile du Nether Balle Rebondissant
