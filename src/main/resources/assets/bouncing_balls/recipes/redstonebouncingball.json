@@ -1,0 +1,66 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "mbm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:redstone"
+    },
+    "b": [
+      {
+        "item": "bouncing_balls:blackbouncingball"
+      },
+      {
+        "item": "bouncing_balls:redbouncingball"
+      },
+      {
+        "item": "bouncing_balls:darkgreenbouncingball"
+      },
+      {
+        "item": "bouncing_balls:brownbouncingball"
+      },
+      {
+        "item": "bouncing_balls:bluebouncingball"
+      },
+      {
+        "item": "bouncing_balls:purplebouncingball"
+      },
+      {
+        "item": "bouncing_balls:cyanbouncingball"
+      },
+      {
+        "item": "bouncing_balls:lightgraybouncingball"
+      },
+      {
+        "item": "bouncing_balls:graybouncingball"
+      },
+      {
+        "item": "bouncing_balls:pinkbouncingball"
+      },
+      {
+        "item": "bouncing_balls:greenbouncingball"
+      },
+      {
+        "item": "bouncing_balls:yellowbouncingball"
+      },
+      {
+        "item": "bouncing_balls:lightbluebouncingball"
+      },
+      {
+        "item": "bouncing_balls:magentabouncingball"
+      },
+      {
+        "item": "bouncing_balls:orangebouncingball"
+      },
+      {
+        "item": "bouncing_balls:whitebouncingball"
+      }     
+    ]
+  },
+  "result": {
+    "item": "bouncing_balls:redstonebouncingball"
+  }
+}

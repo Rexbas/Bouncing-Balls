@@ -1,0 +1,38 @@
+itemGroup.bouncing_balls=Bouncing Balls
+
+bouncing_balls.eggbouncingball.tooltip=Du brauchst Eier als Munition
+bouncing_balls.snowbouncingball.tooltip=Du brauchst Schneebälle als Munition
+bouncing_balls.dynamitebouncingball.tooltip=Du brauchst Schwarzpulver als Munition
+bouncing_balls.dynamitebouncingball.warning=WARNUNG Dieser Ball schafft Explosionen
+
+item.blackbouncingball.name=Schwarzer Bouncing Ball
+item.redbouncingball.name=Roter Bouncing Ball
+item.darkgreenbouncingball.name=Dunkelgrüner Bouncing Ball
+item.brownbouncingball.name=Brauner Bouncing Ball
+item.bluebouncingball.name=Blauer Bouncing Ball
+item.purplebouncingball.name=Violetter Bouncing Ball
+item.cyanbouncingball.name=Türkiser Bouncing Ball
+item.lightgraybouncingball.name=Hellgrauer Bouncing Ball
+item.graybouncingball.name=Grauer Bouncing Ball
+item.pinkbouncingball.name=Rosa Bouncing Ball
+item.greenbouncingball.name=Grüner Bouncing Ball
+item.yellowbouncingball.name=Gelber Bouncing Ball
+item.lightbluebouncingball.name=Hellblauer Bouncing Ball
+item.magentabouncingball.name=Magenta Bouncing Ball
+item.orangebouncingball.name=Oranger Bouncing Ball
+item.whitebouncingball.name=Weißer Bouncing Ball
+
+item.eggbouncingball.name=Ei Bouncing Ball
+item.snowbouncingball.name=Schnee Bouncing Ball
+item.dynamitebouncingball.name=Dynamit Bouncing Ball
+item.slimebouncingball.name=Schleim Bouncing Ball
+item.claybouncingball.name=Ton Bouncing Ball
+item.redstonebouncingball.name=Redstone Bouncing Ball
+item.glowstonebouncingball.name=Glowstone Bouncing Ball
+item.goldenbouncingball.name=Goldbarren Bouncing Ball
+item.ironbouncingball.name=Eisenbarren Bouncing Ball
+item.diamondbouncingball.name=Diamant Bouncing Ball
+item.obsidianbouncingball.name=Obsidian Bouncing Ball
+item.emeraldbouncingball.name=Smaragd Bouncing Ball
+item.netherstarbouncingball.name=Nether Stern Bouncing Ball
+item.quartzbouncingball.name=Quartz Bouncing Ball
