@@ -1,0 +1,29 @@
+itemGroup.BouncingBalls=Stuiterende Ballen
+
+bouncing_balls.EggBouncingBall.tooltip=Je hebt eieren nodig als munitie
+
+item.BlackBouncingBall.name=Zwarte Stuiter Bal
+item.RedBouncingBall.name=Rode Stuiter Bal
+item.DarkGreenBouncingBall.name=Donker Groene Stuiter Bal
+item.BrownBouncingBall.name=Bruine Stuiter Bal
+item.BlueBouncingBall.name=Blauwe Stuiter Bal
+item.PurpleBouncingBall.name=Paarse Stuiter Bal
+item.CyanBouncingBall.name=Turquoise Stuiter Bal
+item.LightGrayBouncingBall.name=Licht Grijze Stuiter Bal
+item.GrayBouncingBall.name=Grijze Stuiter Bal
+item.PinkBouncingBall.name=Roze Stuiter Bal
+item.GreenBouncingBall.name=Groene Stuiter Bal
+item.YellowBouncingBall.name=Gele Stuiter Bal
+item.LightBlueBouncingBall.name=Licht Blauwe Stuiter Bal
+item.MagentaBouncingBall.name=Magenta Stuiter Bal
+item.OrangeBouncingBall.name=Oranje Stuiter Bal
+item.WhiteBouncingBall.name=Witte Stuiter Bal
+
+item.EggBouncingBall.name=Eieren Stuiter Bal
+item.ClayBouncingBall.name=Kleien Stuiter Bal
+item.RedstoneBouncingBall.name=Redstone Stuiter Bal
+item.GlowstoneBouncingBall.name=Gloeisteenstof Stuiter Bal
+item.GoldenBouncingBall.name=Gouden Stuiter Bal
+item.IronBouncingBall.name=Ijzeren Stuiter Bal
+item.DiamondBouncingBall.name=Diamanten Stuiter Bal
+item.EmeraldBouncingBall.name=Smaragden Stuiter Bal

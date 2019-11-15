@@ -1,0 +1,16 @@
+[
+{
+  "modid": "bouncing_balls",
+  "name": "Bouncing Balls",
+  "description": "Jump around the world with Bouncing Balls!",
+  "version": "1.1",
+  "mcversion": "1.7.10",
+  "url": "http://www.planetminecraft.com/mod/bouncing-balls/",
+  "updateUrl": "",
+  "authorList": ["Rexbas", "Asterions/TrezionTvS"],
+  "credits": "",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

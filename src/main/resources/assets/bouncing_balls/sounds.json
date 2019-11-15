@@ -1,0 +1,5 @@
+{
+    "bouncingball.bounce": {
+    "category": "neutral",
+    "sounds": ["bouncingball/bounce"]}
+}

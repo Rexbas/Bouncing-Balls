@@ -1,0 +1,29 @@
+itemGroup.BouncingBalls=Bolas que Despiden
+
+bouncing_balls.EggBouncingBall.tooltip=Necesita huevos como munición
+
+item.BlackBouncingBall.name=Negro Bola que Despide
+item.RedBouncingBall.name=Rojo Bola que Despide
+item.DarkGreenBouncingBall.name=Verde Oscuro Bola que Despide
+item.BrownBouncingBall.name=Moreno Bola que Despide
+item.BlueBouncingBall.name=Azul Bola que Despide
+item.PurpleBouncingBall.name=Morado Bola que Despide
+item.CyanBouncingBall.name=Cian Bola que Despide
+item.LightGrayBouncingBall.name=Gris Claro Bola que Despide
+item.GrayBouncingBall.name=Gris Bola que Despide
+item.PinkBouncingBall.name=Rosa Bola que Despide
+item.GreenBouncingBall.name=Verde Bola que Despide
+item.YellowBouncingBall.name=Amarillo Bola que Despide
+item.LightBlueBouncingBall.name=Azul Claro Bola que Despide
+item.MagentaBouncingBall.name=Magenta Bola que Despide
+item.OrangeBouncingBall.name=Naranja Bola que Despide
+item.WhiteBouncingBall.name=Blanco Bola que Despide
+
+item.EggBouncingBall.name=Huevo Bola que Despide
+item.ClayBouncingBall.name=Arcilla Bola que Despide
+item.RedstoneBouncingBall.name=Redstone Bola que Despide
+item.GlowstoneBouncingBall.name=Piedra Luminosa Bola que Despide
+item.GoldenBouncingBall.name=Oro Bola que Despide
+item.IronBouncingBall.name=Hierro Bola que Despide
+item.DiamondBouncingBall.name=Diamante Bola que Despide
+item.EmeraldBouncingBall.name=Esmeralda Bola que Despide
