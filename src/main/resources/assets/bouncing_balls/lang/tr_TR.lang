@@ -1,0 +1,38 @@
+itemGroup.bouncing_balls=Zıplayan Toplar
+
+bouncing_balls.eggbouncingball.tooltip=Mermi olarak yumurta gerekli
+bouncing_balls.snowbouncingball.tooltip=Mermi olarak kar topu gerekli
+bouncing_balls.dynamitebouncingball.tooltip=Mermi olarak barut gerekli
+bouncing_balls.dynamitebouncingball.warning=UYARI Bu top patlamalar yaratır
+
+item.blackbouncingball.name=Siyah Zıplayan Top
+item.redbouncingball.name=Kırmızı Zıplayan Top
+item.darkgreenbouncingball.name=Koyu Yeşil Zıplayan Top
+item.brownbouncingball.name=Kahverengi Zıplayan Top
+item.bluebouncingball.name=Mavi Zıplayan Top
+item.purplebouncingball.name=Mor Zıplayan Top
+item.cyanbouncingball.name=Camgöbeği Zıplayan Top
+item.lightgraybouncingball.name=Açık Gri Zıplayan Top
+item.graybouncingball.name=Gri Zıplayan Top
+item.pinkbouncingball.name=Pembe Zıplayan Top
+item.greenbouncingball.name=Yeşil Zıplayan Top
+item.yellowbouncingball.name=Sarı Zıplayan Top
+item.lightbluebouncingball.name=Açık Mavi Zıplayan Top
+item.magentabouncingball.name=Eflatun Zıplayan Top
+item.orangebouncingball.name=Turuncu Zıplayan Top
+item.whitebouncingball.name=Beyaz Zıplayan Top
+
+item.eggbouncingball.name=Yumurta Zıplayan Top
+item.snowbouncingball.name=Kar Zıplayan Top
+item.dynamitebouncingball.name=Dinamit Zıplayan Top
+item.slimebouncingball.name=Slime Zıplayan Top
+item.claybouncingball.name=Kil Zıplayan Top
+item.redstonebouncingball.name=Redstone Zıplayan Top
+item.glowstonebouncingball.name=Glowstone Zıplayan Top
+item.goldenbouncingball.name=Altın Zıplayan Top
+item.ironbouncingball.name=Demir Zıplayan Top
+item.diamondbouncingball.name=Elmas Zıplayan Top
+item.obsidianbouncingball.name=Obsidyen Zıplayan Top
+item.emeraldbouncingball.name=Zümrüt Zıplayan Top
+item.netherstarbouncingball.name=Nether Yıldızı Zıplayan Top
+item.quartzbouncingball.name=Kuvars Zıplayan Top

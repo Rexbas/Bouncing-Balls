@@ -1,0 +1,38 @@
+itemGroup.bouncing_balls=Stuiterende Ballen
+
+bouncing_balls.eggbouncingball.tooltip=Je hebt eieren nodig als munitie
+bouncing_balls.snowbouncingball.tooltip=Je hebt sneeuwballen nodig als munitie
+bouncing_balls.dynamitebouncingball.tooltip=Je hebt buskruit nodig als munitie
+bouncing_balls.dynamitebouncingball.warning=WAARSCHUWING Deze bal maakt explosies
+
+item.blackbouncingball.name=Zwarte Stuiter Bal
+item.redbouncingball.name=Rode Stuiter Bal
+item.darkgreenbouncingball.name=Donker Groene Stuiter Bal
+item.brownbouncingball.name=Bruine Stuiter Bal
+item.bluebouncingball.name=Blauwe Stuiter Bal
+item.purplebouncingball.name=Paarse Stuiter Bal
+item.cyanbouncingball.name=Turquoise Stuiter Bal
+item.lightgraybouncingball.name=Licht Grijze Stuiter Bal
+item.graybouncingball.name=Grijze Stuiter Bal
+item.pinkbouncingball.name=Roze Stuiter Bal
+item.greenbouncingball.name=Groene Stuiter Bal
+item.yellowbouncingball.name=Gele Stuiter Bal
+item.lightbluebouncingball.name=Licht Blauwe Stuiter Bal
+item.magentabouncingball.name=Magenta Stuiter Bal
+item.orangebouncingball.name=Oranje Stuiter Bal
+item.whitebouncingball.name=Witte Stuiter Bal
+
+item.eggbouncingball.name=Eieren Stuiter Bal
+item.snowbouncingball.name=Sneeuwen Stuiter Bal
+item.dynamitebouncingball.name=Dynamiete Stuiter Bal
+item.slimebouncingball.name=Slijm Stuiter Bal
+item.claybouncingball.name=Kleien Stuiter Bal
+item.redstonebouncingball.name=Redstone Stuiter Bal
+item.glowstonebouncingball.name=Gloeisteenstof Stuiter Bal
+item.goldenbouncingball.name=Gouden Stuiter Bal
+item.ironbouncingball.name=Ijzeren Stuiter Bal
+item.diamondbouncingball.name=Diamanten Stuiter Bal
+item.obsidianbouncingball.name=Obsidiaan Stuiter Bal
+item.emeraldbouncingball.name=Smaragden Stuiter Bal
+item.netherstarbouncingball.name=Nether Ster Stuiter Bal
+item.quartzbouncingball.name=Kwartsen Stuiter Bal

@@ -1,0 +1,6 @@
+{
+    "parent": "bouncing_balls:item/bouncingball",
+    "textures": {
+        "layer0": "bouncing_balls:items/eggbouncingball"
+    }
+}
