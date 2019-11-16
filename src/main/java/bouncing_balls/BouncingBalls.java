@@ -3,7 +3,6 @@ package bouncing_balls;
 import bouncing_balls.capability.BB_CAPProvider;
 import bouncing_balls.capability.BB_CAPStorage;
 import bouncing_balls.capability.IBB_CAP;
-import bouncing_balls.configuration.ConfigurationHandler;
 import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.JumpHandler;
@@ -11,7 +10,6 @@ import bouncing_balls.packet.DecreaseStackHandler;
 import bouncing_balls.packet.DecreaseStackPacket;
 import bouncing_balls.registry.ItemRegistry;
 import bouncing_balls.tab.TabBouncingBalls;
-import bouncing_balls.updatechecker.UpdateChecker;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -32,26 +30,15 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = "@{version}", guiFactory = "bouncing_balls.configuration.GuiFactory")
+@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = "@{version}", updateJSON = "https://raw.githubusercontent.com/Rexbas/Bouncing-Balls/update/update.json")
 public class BouncingBalls {
-	
-	/*TODO
-	 * Drijven in water
-	 * enchantment water ball frost walking ofzo
-	 * prismarine
-	 * chorus
-	 * 3d model
-	 * chest
-	 */
 
 	public static final String MODID = "bouncing_balls";
 	public static final String NAME = "Bouncing Balls";
 	//public static final String MODVERSION = "1.5.1.1";
 	public static final String MODVERSION = "@{version}";
 	public static final String MCVERSION = "@{mcversion}";
-	
-	public static Configuration config;
-		
+			
 	@CapabilityInject(IBB_CAP.class)
 	public static final Capability<IBB_CAP> BB_CAP = null;
 	
@@ -103,8 +90,6 @@ public class BouncingBalls {
     
     @Instance(MODID)
     public static BouncingBalls instance;
-	public static UpdateChecker updateChecker;
-	public static boolean haveWarnedVersionOutOfDate = false;
     
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -117,10 +102,7 @@ public class BouncingBalls {
     }
     
     @EventHandler
-    public void preinit(FMLPreInitializationEvent event) {
-    	config = new Configuration(event.getSuggestedConfigurationFile());
-    	ConfigurationHandler.syncConfig();
-    	
+    public void preinit(FMLPreInitializationEvent event) {  	
     	network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
     	network.registerMessage(new DecreaseStackHandler(), DecreaseStackPacket.class, 0, Side.SERVER);
 
