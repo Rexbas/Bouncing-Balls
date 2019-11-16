@@ -10,6 +10,18 @@
                 "1.9-latest": "1.0.0.7",
                 "1.9-recommended": "1.0.0.4"
         }, 
+        "1.12.2": {
+                "1.2.0": "Ported to 1.10.2",
+                "1.2.0": "Rewrote networking code",
+                "1.2.1": "Added experimental custom crafting system",
+                "6.2.0": "Fixed a bug with experimental crafting system"
+        },
+        "1.12": {
+                "1.2.0": "Ported to 1.10.2",
+                "1.2.0": "Rewrote networking code",
+                "1.2.1": "Added experimental custom crafting system",
+                "6.1.0": "Fixed a bug with experimental crafting system"
+        }, 
         "1.10.2": {
                 "1.2.0.0": "Ported to 1.10.2",
                 "1.2.0.3": "Rewrote networking code",
