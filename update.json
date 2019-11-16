@@ -1,36 +1,54 @@
 { 
         "homepage": "https://www.curseforge.com/minecraft/mc-mods/bouncing-balls/files", 
         "promos": { 
-                "1.12-latest": "6.1.0",
-                "1.12-recommended": "6.1.0",
-                "1.10.2-latest": "1.2.1.1",
-                "1.10.2-recommended": "1.2.0.3",
-                "1.9.4-latest": "1.1.0.3",
-                "1.9.4-recommended": "1.1.0.1",
-                "1.9-latest": "1.0.0.7",
-                "1.9-recommended": "1.0.0.4"
+                "1.12.2-latest": "6.0.0",
+                "1.12.2-recommended": "6.0.0",
+                "1.12.1-latest": "6.0.0",
+                "1.12.1-recommended": "6.0.0",
+                "1.12-latest": "6.0.0",
+                "1.12-recommended": "6.0.0",
+                
+                "1.11.2-latest": "5.0.0",
+                "1.11.2-recommended": "5.0.0",
+                "1.11-latest": "5.0.0",
+                "1.11-recommended": "5.0.0",
+                
+                "1.10.2-latest": "4.0.0",
+                "1.10.2-recommended": "4.0.0",
+                "1.10-latest": "4.0.0",
+                "1.10-recommended": "4.0.0",
+                
+                "1.9.4-latest": "4.0.0",
+                "1.9.4-recommended": "4.0.0",
+                
+                "1.8.9-latest": "3.0.0",
+                "1.8.9-recommended": "3.0.0"
+        }, 
+        "1.12.2": {
+                "6.0.0": ""
+        }, 
+        "1.12.1": {
+                "6.0.0": ""
         }, 
         "1.12": {
-                "1.2.0": "Ported to 1.10.2",
-                "1.2.0": "Rewrote networking code",
-                "1.2.1": "Added experimental custom crafting system",
-                "6.1.0": "Fixed a bug with experimental crafting system"
+                "6.0.0": ""
+        }, 
+        "1.11.2": {
+                "5.0.0": ""
+        }, 
+        "1.11": {
+                "5.0.0": ""
         }, 
         "1.10.2": {
-                "1.2.0.0": "Ported to 1.10.2",
-                "1.2.0.3": "Rewrote networking code",
-                "1.2.1.0": "Added experimental custom crafting system",
-                "1.2.1.1": "Fixed a bug with experimental crafting system"
+                "4.0.0": ""
+        }, 
+        "1.10": {
+                "4.0.0": ""
         }, 
         "1.9.4": {
-                "1.1.0.0": "Ported to 1.9.4",
-                "1.1.0.1": "Fixed some oversights with 1.9.4 porting",
-                "1.1.0.3": "Added tacos. Yumm!"
+                "4.0.0": ""
         }, 
-        "1.9": {
-                "1.0.0.0": "Initial Release",
-                "1.0.0.4": "Fixed a crash when crafting X",
-                "1.0.0.5": "Added experimental JEI support",
-                "1.0.0.7": "Fixed loading time issue with JEI support"
-        } 
+        "1.8.9": {
+                "3.0.0": ""
+        }
 } 
