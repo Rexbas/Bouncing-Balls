@@ -1,7 +1,6 @@
 package bouncing_balls;
 
 import bouncing_balls.item.BouncingBall;
-import bouncing_balls.updatechecker.UpdateChecker;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -16,14 +15,6 @@ public class ClientProxy extends CommonProxy {
 		for(int i = 0; i <= 29; i++) {
 			registerItem(BouncingBall.returnByID(i));
 		}		
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerUpdateChecker() {
-		BouncingBalls.updateChecker = new UpdateChecker();
-		Thread updateCheckerThread = new Thread(BouncingBalls.updateChecker, "Bouncing Balls Update Checker");
-		updateCheckerThread.start();
 	}
 	
 	public void registerItem(Item i) {

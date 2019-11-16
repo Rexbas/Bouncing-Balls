@@ -3,7 +3,6 @@ package bouncing_balls;
 import bouncing_balls.capability.BB_CAPProvider;
 import bouncing_balls.capability.BB_CAPStorage;
 import bouncing_balls.capability.IBB_CAP;
-import bouncing_balls.configuration.ConfigurationHandler;
 import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.JumpHandler;
@@ -13,7 +12,6 @@ import bouncing_balls.registry.ItemRegistry;
 import bouncing_balls.registry.RecipeRegistry;
 import bouncing_balls.registry.SoundEventRegistry;
 import bouncing_balls.tab.TabBouncingBalls;
-import bouncing_balls.updatechecker.UpdateChecker;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.SoundEvent;
@@ -32,24 +30,12 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = BouncingBalls.MODVERSION, guiFactory = "bouncing_balls.configuration.GuiFactory")
+@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = "@{version}", updateJSON = "https://raw.githubusercontent.com/Rexbas/Bouncing-Balls/update/update.json")
 public class BouncingBalls {
-	
-	/*TODO
-	 * Drijven in water
-	 * enchantment water ball frost walking ofzo
-	 * prismarine
-	 * chorus
-	 * Recipes
-	 */
 
 	public static final String MODID = "bouncing_balls";
 	public static final String NAME = "Bouncing Balls";
-	public static final String MODVERSION = "1.5.0.1";
-	public static final String MCVERSION = "1.11";
-	
-	public static Configuration config;
-		
+			
 	@CapabilityInject(IBB_CAP.class)
 	public static final Capability<IBB_CAP> BB_CAP = null;
 	
@@ -101,8 +87,6 @@ public class BouncingBalls {
     
     @Instance(MODID)
     public static BouncingBalls instance;
-	public static UpdateChecker updateChecker;
-	public static boolean haveWarnedVersionOutOfDate = false;
     
     @EventHandler
     public void init(FMLInitializationEvent event) {
@@ -116,9 +100,6 @@ public class BouncingBalls {
     
     @EventHandler
     public void preinit(FMLPreInitializationEvent event) {
-    	config = new Configuration(event.getSuggestedConfigurationFile());
-    	ConfigurationHandler.syncConfig();
-    	
     	network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
     	network.registerMessage(new DecreaseStackHandler(), DecreaseStackPacket.class, 0, Side.SERVER);
 

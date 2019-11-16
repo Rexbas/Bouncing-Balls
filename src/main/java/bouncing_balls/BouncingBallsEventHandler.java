@@ -2,7 +2,6 @@ package bouncing_balls;
 
 import bouncing_balls.capability.BB_CAPProvider;
 import bouncing_balls.capability.IBB_CAP;
-import bouncing_balls.configuration.ConfigurationHandler;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
@@ -113,18 +112,4 @@ public class BouncingBallsEventHandler {
 			}
 		}
 	}
-	
-	@SubscribeEvent(priority=EventPriority.HIGHEST, receiveCanceled=true)
-	public void onEvent(PlayerTickEvent event) {
-		if(!BouncingBalls.haveWarnedVersionOutOfDate && event.player.world.isRemote && !BouncingBalls.updateChecker.isLatestVersion() && ConfigurationHandler.showUpdateCheck) {
-			BouncingBalls.updateChecker.updateStatus(event.player);
-		}
-	}
-	
-    @SubscribeEvent
-    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event){
-    	if(event.getModID().equals(BouncingBalls.MODID)){
-    		ConfigurationHandler.syncConfig();
-    	}
-    }
 }
