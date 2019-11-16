@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = BouncingBalls.MODVERSION, guiFactory = "bouncing_balls.configuration.GuiFactory")
+@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = "@{version}", guiFactory = "bouncing_balls.configuration.GuiFactory")
 public class BouncingBalls {
 	
 	/*TODO
@@ -46,8 +46,9 @@ public class BouncingBalls {
 
 	public static final String MODID = "bouncing_balls";
 	public static final String NAME = "Bouncing Balls";
-	public static final String MODVERSION = "1.5.1.1";
-	public static final String MCVERSION = "1.12";
+	//public static final String MODVERSION = "1.5.1.1";
+	public static final String MODVERSION = "@{version}";
+	public static final String MCVERSION = "@{mcversion}";
 	
 	public static Configuration config;
 		
