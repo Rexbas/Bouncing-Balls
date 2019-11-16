@@ -30,14 +30,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.NAME, version = "@{version}", updateJSON = "https://raw.githubusercontent.com/Rexbas/Bouncing-Balls/update/update.json")
+@Mod(modid = BouncingBalls.MODID, name = BouncingBalls.MODNAME , version = "@{version}", updateJSON = "https://raw.githubusercontent.com/Rexbas/Bouncing-Balls/update/update.json")
 public class BouncingBalls {
 
 	public static final String MODID = "bouncing_balls";
-	public static final String NAME = "Bouncing Balls";
-	//public static final String MODVERSION = "1.5.1.1";
-	public static final String MODVERSION = "@{version}";
-	public static final String MCVERSION = "@{mcversion}";
+	public static final String MODNAME = "Bouncing Balls";
 			
 	@CapabilityInject(IBB_CAP.class)
 	public static final Capability<IBB_CAP> BB_CAP = null;
