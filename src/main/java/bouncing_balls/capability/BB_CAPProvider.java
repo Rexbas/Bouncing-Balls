@@ -1,37 +1,29 @@
 package bouncing_balls.capability;
 
+import bouncing_balls.BouncingBalls;
+import bouncing_balls.item.BouncingBall;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import bouncing_balls.BouncingBalls;
-import bouncing_balls.item.BouncingBall;
 
 public class BB_CAPProvider implements ICapabilityProvider, IBB_CAP {
 
 	private EntityPlayer player;
-	private AttachCapabilitiesEvent.Entity event;
 	private int jumpsInAir = 0;
 	private float fallDistance;
 	private float manualFallDistance;
 	private int ticksOnGround;
 	
-	public BB_CAPProvider(AttachCapabilitiesEvent.Entity event) {
-		this.player = (EntityPlayer) event.getEntity();
-		this.event = event;
+	public BB_CAPProvider(EntityPlayer player) {
+		this.player = player;
 	}
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if(capability == BouncingBalls.BB_CAP) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		if(capability == BouncingBalls.BB_CAP) return true;
+		else return false;
 	}
 
 	@Override
@@ -39,9 +31,7 @@ public class BB_CAPProvider implements ICapabilityProvider, IBB_CAP {
 		if(BouncingBalls.BB_CAP != null && capability == BouncingBalls.BB_CAP) {
 			return (T) this;
 		}
-		else {
-			return null;
-		}
+		else return null;
 	}
 	
 	@Override
@@ -49,7 +39,7 @@ public class BB_CAPProvider implements ICapabilityProvider, IBB_CAP {
 		if(player.onGround && !player.isInWater() && !player.isInLava()) {
 			return true;
 		}
-		else{
+		else {
 			return false;
 		}
 	}

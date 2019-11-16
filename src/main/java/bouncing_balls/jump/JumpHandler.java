@@ -2,20 +2,17 @@ package bouncing_balls.jump;
 
 import java.util.Random;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.server.SPacketEntityVelocity;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.capability.IBB_CAP;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.packet.DecreaseStackPacket;
 import bouncing_balls.throwable.CustomEntityEgg;
 import bouncing_balls.throwable.CustomEntitySnowball;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 
 public class JumpHandler {
 	
@@ -49,7 +46,7 @@ public class JumpHandler {
 		
 		if(jump.getJumpType() == JumpType.EGG_JUMP || jump.getJumpType() == JumpType.SNOWBALL_JUMP) {
 			if(player.inventory.hasItemStack(jump.getJumpType().getNeededItem()) && world.isRemote) {
-				int slot = getSlotFor(player, jump.getJumpType().getNeededItem());
+				int slot = player.inventory.getSlotFor(jump.getJumpType().getNeededItem());
 				BouncingBalls.network.sendToServer(new DecreaseStackPacket(slot));
 			}			
 			capability.setJumpsInAir(jumps + 1);
@@ -64,7 +61,7 @@ public class JumpHandler {
 		}
 		else if(jump.getJumpType() == JumpType.DYNAMITE_JUMP) {
 			if(player.inventory.hasItemStack(jump.getJumpType().getNeededItem()) && world.isRemote) {
-				int slot = getSlotFor(player, jump.getJumpType().getNeededItem());
+				int slot = player.inventory.getSlotFor(jump.getJumpType().getNeededItem());
 				BouncingBalls.network.sendToServer(new DecreaseStackPacket(slot));
 			}
 			capability.setJumpsInAir(jumps + 1);
@@ -83,15 +80,6 @@ public class JumpHandler {
 		    }
 		}
 	}
-	
-    private static int getSlotFor(EntityPlayer player, ItemStack stack) {
-        for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
-            if(player.inventory.mainInventory[i] != null && stackEqualExact(stack, player.inventory.mainInventory[i])) {
-                return i;
-            }
-        }
-        return -1;
-    }
     
     private static boolean stackEqualExact(ItemStack stack1, ItemStack stack2) {
         return stack1.getItem() == stack2.getItem() && (!stack1.getHasSubtypes() || stack1.getMetadata() == stack2.getMetadata()) && ItemStack.areItemStackTagsEqual(stack1, stack2);

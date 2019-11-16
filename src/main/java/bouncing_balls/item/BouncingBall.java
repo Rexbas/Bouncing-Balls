@@ -2,28 +2,24 @@ package bouncing_balls.item;
 
 import java.util.List;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionAbsorption;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.capability.IBB_CAP;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BouncingBall extends Item {
 	
@@ -32,21 +28,18 @@ public class BouncingBall extends Item {
 	protected float movingAmount;
 	protected double motionY;
 	
-	public BouncingBall(BallType type, int id) {
+	public BouncingBall(BallType type, int id, String name) {
 		this.ID = id;
 		this.materialType = type;
 		this.maxStackSize = 1;
 		this.setCreativeTab(BouncingBalls.tabBouncingBalls);
 		this.setProperties();
+		this.setRegistryName(name);
+		this.setUnlocalizedName(name);
 	}
 	
 	@Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		float yaw = player.rotationYaw;
-		float pitch = player.rotationPitch;
-		double motionX = (double)(-MathHelper.sin(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
-		double motionZ = (double)(MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);	
-		
+    public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {    	
 		if(hand == EnumHand.OFF_HAND && player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
 	        return new ActionResult(EnumActionResult.FAIL, stack);
 		}
@@ -106,14 +99,14 @@ public class BouncingBall extends Item {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 		if(this.getMaterialType() == BallType.EGG) {
-			tooltip.add(I18n.translateToLocal("bouncing_balls.EggBouncingBall.tooltip"));
+			tooltip.add(I18n.translateToLocal("bouncing_balls.eggbouncingball.tooltip"));
 		}
 		else if(this.getMaterialType() == BallType.SNOW) {
-			tooltip.add(I18n.translateToLocal("bouncing_balls.SnowBouncingBall.tooltip"));
+			tooltip.add(I18n.translateToLocal("bouncing_balls.snowbouncingball.tooltip"));
 		}
 		else if(this.getMaterialType() == BallType.DYNAMITE) {
-			tooltip.add(I18n.translateToLocal("bouncing_balls.DynamiteBouncingBall.tooltip"));
-			tooltip.add(I18n.translateToLocal("bouncing_balls.DynamiteBouncingBall.warning"));
+			tooltip.add(I18n.translateToLocal("bouncing_balls.dynamitebouncingball.tooltip"));
+			tooltip.add(I18n.translateToLocal("bouncing_balls.dynamitebouncingball.warning"));
 		}
     }
 		
@@ -207,6 +200,8 @@ public class BouncingBall extends Item {
 			return BouncingBalls.emeraldBouncingBall;
 		case 28:
 			return BouncingBalls.netherStarBouncingBall;
+		case 29:
+			return BouncingBalls.quartzBouncingBall;
 		default:
 			return null;
 		}

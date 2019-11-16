@@ -1,7 +1,5 @@
 package bouncing_balls.jump;
 
-import java.util.Date;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 

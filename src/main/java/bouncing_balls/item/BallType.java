@@ -20,6 +20,7 @@ public enum BallType {
 	OBSIDIAN(true, 500, 1.0F, 0.75F, Item.getItemFromBlock(Blocks.OBSIDIAN), 10F),
 	EMERALD(true, 600, 1.25F, 1.5F, Items.EMERALD, 16F),
 	NETHER_STAR(true, 2500, 1.75F, 1.5F, Items.NETHER_STAR, 18F),
+	QUARTZ(true, 550, 1.0F, 0.8F, Items.QUARTZ, 10F),
 	NORMAL(true, 100, 0.5F, 0.65F, Items.SLIME_BALL, 10F);
 		
 	private boolean hasMaxDamage;

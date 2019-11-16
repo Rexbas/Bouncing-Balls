@@ -1,5 +1,11 @@
 package bouncing_balls;
 
+import bouncing_balls.capability.BB_CAPProvider;
+import bouncing_balls.capability.IBB_CAP;
+import bouncing_balls.item.BouncingBall;
+import bouncing_balls.jump.BouncingBallJump;
+import bouncing_balls.jump.JumpHandler;
+import bouncing_balls.jump.JumpType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -7,33 +13,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-import bouncing_balls.capability.BB_CAPProvider;
-import bouncing_balls.capability.IBB_CAP;
-import bouncing_balls.configuration.ConfigurationHandler;
-import bouncing_balls.item.BouncingBall;
-import bouncing_balls.jump.BouncingBallJump;
-import bouncing_balls.jump.JumpHandler;
-import bouncing_balls.jump.JumpType;
 
 public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
-	public void attachtCapability(AttachCapabilitiesEvent.Entity event) {		
-		if(event.getEntity() instanceof EntityPlayer) {
-			event.addCapability(new ResourceLocation(BouncingBalls.MODID + ":BBCAP"), new BB_CAPProvider(event));
+	public void attachtCapability (AttachCapabilitiesEvent.Entity event) {	
+		if(event.getObject() instanceof EntityPlayer) {
+			event.addCapability(new ResourceLocation(BouncingBalls.MODID + ":BBCAP"), new BB_CAPProvider((EntityPlayer) event.getObject()));
 		}
-	}	
+	}
 	
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event) {
 		if(event.getEntityLiving() instanceof EntityPlayer) {			
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			World world = player.worldObj;
-			IBB_CAP capability = player.getCapability(BouncingBalls.BB_CAP, player.getHorizontalFacing());
+			IBB_CAP capability = player.getCapability(BouncingBalls.BB_CAP, player.getHorizontalFacing());			
 			float fallDistance = capability.fallDistance();
 			
 			int ticks = capability.ticksOnGround();
@@ -113,18 +109,4 @@ public class BouncingBallsEventHandler {
 			}
 		}
 	}
-	
-	@SubscribeEvent(priority=EventPriority.HIGHEST, receiveCanceled=true)
-	public void onEvent(PlayerTickEvent event) {
-		if(!BouncingBalls.haveWarnedVersionOutOfDate && event.player.worldObj.isRemote && !BouncingBalls.updateChecker.isLatestVersion() && ConfigurationHandler.showUpdateCheck) {
-			BouncingBalls.updateChecker.updateStatus(event.player);
-		}
-	}
-	
-    @SubscribeEvent
-    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event){
-    	if(event.getModID().equals(BouncingBalls.MODID)){
-    		ConfigurationHandler.syncConfig();
-    	}
-    }
 }
