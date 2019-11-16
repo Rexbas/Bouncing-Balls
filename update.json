@@ -1,21 +1,15 @@
 { 
         "homepage": "https://www.curseforge.com/minecraft/mc-mods/bouncing-balls/files", 
         "promos": { 
-                "1.10.2-latest": "1.2.1.1",
-                "1.12.2-latest": "6.2.0",
                 "1.12-latest": "6.1.0",
+                "1.12-recommended": "6.1.0",
+                "1.10.2-latest": "1.2.1.1",
                 "1.10.2-recommended": "1.2.0.3",
                 "1.9.4-latest": "1.1.0.3",
                 "1.9.4-recommended": "1.1.0.1",
                 "1.9-latest": "1.0.0.7",
                 "1.9-recommended": "1.0.0.4"
         }, 
-        "1.12.2": {
-                "1.2.0": "Ported to 1.10.2",
-                "1.2.0": "Rewrote networking code",
-                "1.2.1": "Added experimental custom crafting system",
-                "6.2.0": "Fixed a bug with experimental crafting system"
-        },
         "1.12": {
                 "1.2.0": "Ported to 1.10.2",
                 "1.2.0": "Rewrote networking code",
