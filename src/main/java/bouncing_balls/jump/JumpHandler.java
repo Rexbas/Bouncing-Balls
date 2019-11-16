@@ -6,9 +6,9 @@ import bouncing_balls.BouncingBalls;
 import bouncing_balls.capability.IBB_CAP;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.packet.DecreaseStackPacket;
-import bouncing_balls.throwable.CustomEntityEgg;
-import bouncing_balls.throwable.CustomEntitySnowball;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityEgg;
+import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
@@ -51,10 +51,10 @@ public class JumpHandler {
 			}			
 			capability.setJumpsInAir(jumps + 1);
             if(jump.getJumpType().getEntityThrowable() == "CustomEntityEgg") {
-	            world.spawnEntityInWorld(new CustomEntityEgg(world, player));
+	             world.spawnEntityInWorld(new EntityEgg(world, player));
             }
             else {
-	            world.spawnEntityInWorld(new CustomEntitySnowball(world, player));
+	            world.spawnEntityInWorld(new EntitySnowball(world, player));
             }
             Random itemRand = new Random();
 			player.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
