@@ -1,18 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "ddd",
-    "isi",
-    "iii"
+    "mmm",
+    "mbm",
+    "mmm"
   ],
   "key": {
-    "d": {
-      "item": "minecraft:diamond"
+    "m": {
+      "item": "minecraft:quartz"
     },
-	"i": {
-      "item": "minecraft:iron_ingot"
-    },
-    "s": [
+    "b": [
       {
         "item": "bouncing_balls:blackbouncingball"
       },
