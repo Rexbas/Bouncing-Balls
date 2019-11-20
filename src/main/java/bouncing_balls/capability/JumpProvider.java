@@ -1,6 +1,6 @@
 package bouncing_balls.capability;
 
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -11,9 +11,9 @@ public class JumpProvider implements ICapabilityProvider {
 	public static final Capability<IJumpCapability> JUMP_CAPABILITY = null;
 	
 	private LazyOptional<IJumpCapability> instance = LazyOptional.of(JUMP_CAPABILITY::getDefaultInstance);
-			
+
 	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, EnumFacing side) {
+	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
 		return cap == JUMP_CAPABILITY ? instance.cast() : LazyOptional.empty();
 	}
 }

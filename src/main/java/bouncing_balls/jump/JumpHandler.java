@@ -8,19 +8,20 @@ import bouncing_balls.capability.JumpProvider;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.network.BouncingBallsPacketHandler;
 import bouncing_balls.network.packets.DecreaseItemStackPacket;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityEgg;
-import net.minecraft.entity.projectile.EntitySnowball;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.EggEntity;
+import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.LazyOptional;
 
 public class JumpHandler {
 	
 	public static void jump(BouncingBallJump jump) {
-		EntityPlayer player = jump.getPlayer();
+		PlayerEntity player = jump.getPlayer();
 		ItemStack stack = jump.getItemStack();
 		BouncingBall ball = (BouncingBall) stack.getItem();
 		World world = player.world;
@@ -58,27 +59,27 @@ public class JumpHandler {
 				
 				switch (jump.getJumpType()) {
 				case EGG_JUMP:
-			        if (!world.isRemote) world.spawnEntity(new EntityEgg(world, player));
+			        if (!world.isRemote) world.addEntity(new EggEntity(world, player));
 		            
 		            Random r0 = new Random();
 					player.playSound(SoundEvents.ENTITY_EGG_THROW, 0.5F, 0.4F / (r0.nextFloat() * 0.4F + 0.8F));
 					break;
 				case SNOWBALL_JUMP:        
-			        if (!world.isRemote) world.spawnEntity(new EntitySnowball(world, player));
+			        if (!world.isRemote) world.addEntity(new SnowballEntity(world, player));
 		            
 		            Random r1 = new Random();
 					player.playSound(SoundEvents.ENTITY_SNOWBALL_THROW, 0.5F, 0.4F / (r1.nextFloat() * 0.4F + 0.8F));
 					break;
 				case DYNAMITE_JUMP:
 					player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1, 1);
-					if (!world.isRemote) world.createExplosion(player, player.posX, player.posY, player.posZ, 0.75F, true);
+					if (!world.isRemote) world.createExplosion(player, player.posX, player.posY, player.posZ, 0.75F, false, Explosion.Mode.BREAK);
 					break;
 				default:
 					break;
 				}
 			}
 			else {
-				stack.damageItem(1, player);
+				stack.damageItem(1, player, (p) -> {});
 			    Random rand = new Random();
 			    float pitch1 = (float) (rand.nextFloat() * (1.1 - 0.9) + 0.9);
 			    if(ball.getID() == 19) {

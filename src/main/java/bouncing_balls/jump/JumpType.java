@@ -1,7 +1,7 @@
 package bouncing_balls.jump;
 
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 public enum JumpType {
 	NORMAL,

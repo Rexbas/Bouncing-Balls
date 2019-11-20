@@ -28,9 +28,6 @@ If you prefer to use Eclipse:
 4. Open Project > Run/Debug Settings > Edit runClient and runServer > Environment
 5. Edit MOD_CLASSES to show [modid]%%[Path]; 2 times rather then the generated 4.
 
-!6. mappings channel: 'stable', version: '47-1.13.2' and minecraft 'net.minecraftforge:forge:1.13.2-25.0.n' to minecraft 'net.minecraftforge:forge:1.13.2-25.0.n - 1' or whatever the version before is.
-
-
 If you prefer to use IntelliJ:
 1. Open IDEA, and import project.
 2. Select your build.gradle file and have it import.

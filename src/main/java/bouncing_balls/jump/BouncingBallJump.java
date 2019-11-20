@@ -1,21 +1,21 @@
 package bouncing_balls.jump;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 public class BouncingBallJump {
 
-	private EntityPlayer player;
+	private PlayerEntity player;
 	private ItemStack stack;
 	private JumpType type;
 	
-	public BouncingBallJump(EntityPlayer player, ItemStack stack, JumpType type) {
+	public BouncingBallJump(PlayerEntity player, ItemStack stack, JumpType type) {
 		this.player = player;
 		this.stack = stack;
 		this.type = type;
 	}
 	
-	public EntityPlayer getPlayer() {
+	public PlayerEntity getPlayer() {
 		return this.player;
 	}
 	

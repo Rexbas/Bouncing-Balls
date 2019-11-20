@@ -7,7 +7,7 @@ import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.LazyOptional;
@@ -20,15 +20,15 @@ public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
 	public void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	
-		if(event.getObject() instanceof EntityPlayer) {
+		if(event.getObject() instanceof PlayerEntity) {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.jump"), new JumpProvider());
 		}
 	}
 	
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event) {
-		if(event.getEntityLiving() instanceof EntityPlayer) {			
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+		if(event.getEntityLiving() instanceof PlayerEntity) {			
+			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 			
 			LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
 			cap.ifPresent(c -> {
@@ -98,8 +98,8 @@ public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
 	public void onPlayerFall(LivingFallEvent event) {
-		if(event.getEntityLiving() instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+		if(event.getEntityLiving() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 			if(player.getHeldItemMainhand() != null) {
 				if(player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
 					event.setCanceled(true);

@@ -1,17 +1,17 @@
 package bouncing_balls.capability;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 public interface IJumpCapability {
 	
-	boolean canJump(EntityPlayer player);
-	boolean canJumpInAir(ItemStack requiredItem, EntityPlayer player);
+	boolean canJump(PlayerEntity player);
+	boolean canJumpInAir(ItemStack requiredItem, PlayerEntity player);
 	int jumpsInAir();
 	void setJumpsInAir(int jumpsInAir);
 	float fallDistance();
 	void setFallDistance(float newFallDistance);
-	boolean check(EntityPlayer player);
+	boolean check(PlayerEntity player);
 	int ticksOnGround();
 	void setTicksOnGround(int ticks);
 }

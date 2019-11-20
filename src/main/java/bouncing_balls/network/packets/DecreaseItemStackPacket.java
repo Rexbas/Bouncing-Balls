@@ -2,7 +2,7 @@ package bouncing_balls.network.packets;
 
 import java.util.function.Supplier;
 
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -28,7 +28,7 @@ public class DecreaseItemStackPacket {
 	
 	public static void handle(DecreaseItemStackPacket msg, Supplier<NetworkEvent.Context> context) {
 		context.get().enqueueWork(() -> {
-			EntityPlayerMP player = context.get().getSender();
+			ServerPlayerEntity player = context.get().getSender();
 			player.inventory.decrStackSize(msg.getSlot(), 1);
 		});
 		context.get().setPacketHandled(true);

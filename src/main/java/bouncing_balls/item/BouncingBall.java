@@ -10,19 +10,19 @@ import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.item.Items;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.LazyOptional;
 
@@ -46,20 +46,20 @@ public class BouncingBall extends Item {
 	}
 	
 	@Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
     	ItemStack stack = player.getHeldItem(hand);
     	
-    	if(hand == EnumHand.OFF_HAND && player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
-	        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+    	if(hand == Hand.OFF_HAND && player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
+	        return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
 		}
 		
 		BouncingBall ball = (BouncingBall) stack.getItem();
 		
 		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
-		AtomicReference<EnumActionResult> ar = new AtomicReference<>();
+		AtomicReference<ActionResultType> ar = new AtomicReference<>();
 		
 		if (!cap.isPresent()) {
-	        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+	        return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
 		}
 		
 		cap.ifPresent(c -> {
@@ -69,9 +69,9 @@ public class BouncingBall extends Item {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.NORMAL);
 					JumpHandler.jump(jump);
 					if(ball.getID() == 26) {
-						player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 600, 0, false, false));
+						player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
 					}
-					ar.set(EnumActionResult.SUCCESS);
+					ar.set(ActionResultType.SUCCESS);
 					return;
 				}
 			}
@@ -81,7 +81,7 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.EGG), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.EGG_JUMP);
 					JumpHandler.jump(jump);
-			        ar.set(EnumActionResult.SUCCESS);
+			        ar.set(ActionResultType.SUCCESS);
 			        return;
 				}
 			}
@@ -89,7 +89,7 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.SNOWBALL), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.SNOWBALL_JUMP);
 					JumpHandler.jump(jump);
-			        ar.set(EnumActionResult.SUCCESS);
+			        ar.set(ActionResultType.SUCCESS);
 			        return;
 				}
 			}
@@ -97,7 +97,7 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.GUNPOWDER), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.DYNAMITE_JUMP);
 					JumpHandler.jump(jump);
-			        ar.set(EnumActionResult.SUCCESS);
+			        ar.set(ActionResultType.SUCCESS);
 			        return;
 				}
 			}
@@ -114,14 +114,14 @@ public class BouncingBall extends Item {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		if(this.getMaterialType() == BallType.EGG) {
-			list.add(new TextComponentString("\u00A77").appendSibling(new TextComponentTranslation("bouncing_balls.egg.tooltip")));
+			list.add(new StringTextComponent("\u00A77").appendSibling(new TranslationTextComponent("bouncing_balls.egg.tooltip")));
 		}
 		else if(this.getMaterialType() == BallType.SNOW) {
-			list.add(new TextComponentString("\u00A77").appendSibling(new TextComponentTranslation("bouncing_balls.snow.tooltip")));
+			list.add(new StringTextComponent("\u00A77").appendSibling(new TranslationTextComponent("bouncing_balls.snow.tooltip")));
 		}
 		else if(this.getMaterialType() == BallType.DYNAMITE) {
-			list.add(new TextComponentString("\u00A77").appendSibling(new TextComponentTranslation("bouncing_balls.dynamite.tooltip")));
-			list.add(new TextComponentString("\u00A74").appendSibling(new TextComponentTranslation("bouncing_balls.dynamite.warning")));
+			list.add(new StringTextComponent("\u00A77").appendSibling(new TranslationTextComponent("bouncing_balls.dynamite.tooltip")));
+			list.add(new StringTextComponent("\u00A74").appendSibling(new TranslationTextComponent("bouncing_balls.dynamite.warning")));
 		}
     }
 		
