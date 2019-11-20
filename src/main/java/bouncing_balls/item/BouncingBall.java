@@ -1,11 +1,11 @@
 package bouncing_balls.item;
 
 import java.util.List;
-
-import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicReference;
 
 import bouncing_balls.BouncingBalls;
-import bouncing_balls.capability.IBB_CAP;
+import bouncing_balls.capability.IJumpCapability;
+import bouncing_balls.capability.JumpProvider;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
@@ -19,10 +19,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.common.util.LazyOptional;
 
 public class BouncingBall extends Item {
 	
@@ -32,86 +34,94 @@ public class BouncingBall extends Item {
 	protected double motionY;
 	
 	public BouncingBall(BallType type, int id, String name) {
+		super(new Item.Properties()
+				.maxStackSize(1)
+				.group(BouncingBalls.itemGroup)
+				.defaultMaxDamage(type.getMaxDamage()));
 		this.ID = id;
 		this.materialType = type;
-		this.maxStackSize = 1;
-		this.setCreativeTab(BouncingBalls.tabBouncingBalls);
-		this.setProperties();
-		this.setRegistryName(name);
-		this.setUnlocalizedName(name);
+		this.movingAmount = getMaterialType().getMovingAmount();
+		this.motionY = getMaterialType().getMotionY();
+		this.setRegistryName(new ResourceLocation(BouncingBalls.MODID, name));
 	}
 	
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
     	ItemStack stack = player.getHeldItem(hand);
     	
-		if(hand == EnumHand.OFF_HAND && player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
-	        return new ActionResult(EnumActionResult.FAIL, stack);
+    	if(hand == EnumHand.OFF_HAND && player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
+	        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
 		}
 		
 		BouncingBall ball = (BouncingBall) stack.getItem();
 		
-		//Normal Balls
-		IBB_CAP capability = player.getCapability(BouncingBalls.BB_CAP, player.getHorizontalFacing());
-		int jumps = capability.jumpsInAir();
-		if(ball.getID() != 16 && ball.getID() != 17 && ball.getID() != 18) {
-			if(capability.canJump() && capability.check()) {
-				BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.NORMAL);
-				JumpHandler.jump(jump);
-				if(ball.getID() == 26) {
-					player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 600, 0, false, false));
-				}
-		        return new ActionResult(EnumActionResult.SUCCESS, stack);
-			}
+		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
+		AtomicReference<EnumActionResult> ar = new AtomicReference<>();
+		
+		if (!cap.isPresent()) {
+	        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
 		}
 		
-		//Throwable Ammo Balls
-		if(ball.getID() == 16) {
-			if(capability.canJumpInAir(new ItemStack(Items.EGG)) && capability.check()) {
-				BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.EGG_JUMP);
-				JumpHandler.jump(jump);
-		        return new ActionResult(EnumActionResult.SUCCESS, stack);
+		cap.ifPresent(c -> {
+			//Normal Balls
+			if(ball.getID() != 16 && ball.getID() != 17 && ball.getID() != 18) {
+				if(c.canJump(player) && c.check(player)) {
+					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.NORMAL);
+					JumpHandler.jump(jump);
+					if(ball.getID() == 26) {
+						player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 600, 0, false, false));
+					}
+					ar.set(EnumActionResult.SUCCESS);
+					return;
+				}
 			}
-		}
-		if(ball.getID() == 17) {
-			if(capability.canJumpInAir(new ItemStack(Items.SNOWBALL)) && capability.check()) {
-				BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.SNOWBALL_JUMP);
-				JumpHandler.jump(jump);
-		        return new ActionResult(EnumActionResult.SUCCESS, stack);
+			
+			//Throwable Ammo Balls
+			if(ball.getID() == 16) {
+				if(c.canJumpInAir(new ItemStack(Items.EGG), player) && c.check(player)) {
+					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.EGG_JUMP);
+					JumpHandler.jump(jump);
+			        ar.set(EnumActionResult.SUCCESS);
+			        return;
+				}
 			}
-		}
-		if(ball.getID() == 18) {
-			if(capability.canJumpInAir(new ItemStack(Items.GUNPOWDER)) && capability.check()) {
-				BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.DYNAMITE_JUMP);
-				JumpHandler.jump(jump);
-		        return new ActionResult(EnumActionResult.SUCCESS, stack);
+			if(ball.getID() == 17) {
+				if(c.canJumpInAir(new ItemStack(Items.SNOWBALL), player) && c.check(player)) {
+					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.SNOWBALL_JUMP);
+					JumpHandler.jump(jump);
+			        ar.set(EnumActionResult.SUCCESS);
+			        return;
+				}
 			}
-		}
-        return new ActionResult(EnumActionResult.FAIL, stack);
+			if(ball.getID() == 18) {
+				if(c.canJumpInAir(new ItemStack(Items.GUNPOWDER), player) && c.check(player)) {
+					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.DYNAMITE_JUMP);
+					JumpHandler.jump(jump);
+			        ar.set(EnumActionResult.SUCCESS);
+			        return;
+				}
+			}
+		});
+		
+		return new ActionResult<ItemStack>(ar.get(), stack);
     }
 		
 	@Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		if(repair.getItem() == getMaterialType().getRepairItem()) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return repair.getItem() == getMaterialType().getRepairItem();
     }
 	
 	@Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced) {
+	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		if(this.getMaterialType() == BallType.EGG) {
-			tooltip.add(I18n.translateToLocal("bouncing_balls.eggbouncingball.tooltip"));
+			list.add(new TextComponentString("\u00A77").appendSibling(new TextComponentTranslation("bouncing_balls.egg.tooltip")));
 		}
 		else if(this.getMaterialType() == BallType.SNOW) {
-			tooltip.add(I18n.translateToLocal("bouncing_balls.snowbouncingball.tooltip"));
+			list.add(new TextComponentString("\u00A77").appendSibling(new TextComponentTranslation("bouncing_balls.snow.tooltip")));
 		}
 		else if(this.getMaterialType() == BallType.DYNAMITE) {
-			tooltip.add(I18n.translateToLocal("bouncing_balls.dynamitebouncingball.tooltip"));
-			tooltip.add(I18n.translateToLocal("bouncing_balls.dynamitebouncingball.warning"));
+			list.add(new TextComponentString("\u00A77").appendSibling(new TextComponentTranslation("bouncing_balls.dynamite.tooltip")));
+			list.add(new TextComponentString("\u00A74").appendSibling(new TextComponentTranslation("bouncing_balls.dynamite.warning")));
 		}
     }
 		
@@ -131,21 +141,13 @@ public class BouncingBall extends Item {
 		return this.motionY;
 	}
 	
-	public void setProperties() {
-		if(getMaterialType().hasMaxDamage()) {
-			this.setMaxDamage(getMaterialType().getMaxDamage());
-		}
-		this.movingAmount = getMaterialType().getMovingAmount();
-		this.motionY = getMaterialType().getMotionY();
-	}
-	
 	public float getFallJumpHeight() {
 		return getMaterialType().getFallJumpHeight();
 	}
 	
 	public static Item returnByID(int id) {
 		switch(id) {
-		//Normal Bouncing Balls
+		// Normal Bouncing Balls
 		case 0:
 			return BouncingBalls.blackBouncingBall;
 		case 1:
@@ -178,7 +180,7 @@ public class BouncingBall extends Item {
 			return BouncingBalls.orangeBouncingBall;
 		case 15:
 			return BouncingBalls.whiteBouncingBall;
-		//Abnormal Bouncing Balls
+		// Special Bouncing Balls
 		case 16:
 			return BouncingBalls.eggBouncingBall;
 		case 17:

@@ -1,15 +1,20 @@
 package bouncing_balls.registry;
 
+import bouncing_balls.BouncingBalls;
 import bouncing_balls.item.BouncingBall;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid = BouncingBalls.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ItemRegistry {
 
-	public static void registerItems() {		
+	@SubscribeEvent
+	public static void registerItems(final RegistryEvent.Register<Item> event) {		
 		for(int i = 0; i <= 29; i++) {
 			Item item = BouncingBall.returnByID(i);
-			ForgeRegistries.ITEMS.register(item);
+			event.getRegistry().register(item);
 		}
 	}
 }

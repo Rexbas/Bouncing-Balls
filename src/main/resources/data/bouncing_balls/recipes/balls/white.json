@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "Normal Bouncing Balls",
+  "pattern": [
+    "SSS",
+    "SDS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:slime_ball"
+    },
+    "D": {
+      "item": "minecraft:bone_meal"
+    }
+  },
+  "result": {
+    "item": "bouncing_balls:white"
+  }
+}

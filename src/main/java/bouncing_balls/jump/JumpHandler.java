@@ -3,9 +3,11 @@ package bouncing_balls.jump;
 import java.util.Random;
 
 import bouncing_balls.BouncingBalls;
-import bouncing_balls.capability.IBB_CAP;
+import bouncing_balls.capability.IJumpCapability;
+import bouncing_balls.capability.JumpProvider;
 import bouncing_balls.item.BouncingBall;
-import bouncing_balls.packet.DecreaseStackPacket;
+import bouncing_balls.network.BouncingBallsPacketHandler;
+import bouncing_balls.network.packets.DecreaseItemStackPacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -13,6 +15,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.LazyOptional;
 
 public class JumpHandler {
 	
@@ -22,67 +25,70 @@ public class JumpHandler {
 		BouncingBall ball = (BouncingBall) stack.getItem();
 		World world = player.world;
 		
-		IBB_CAP capability = player.getCapability(BouncingBalls.BB_CAP, player.getHorizontalFacing());
-		int jumps = capability.jumpsInAir();
-		float fallDistance = capability.fallDistance();
-		
-		float movingAmount;
-		double motionY;
-		if(jump.getJumpType() == JumpType.NORMAL || jump.getJumpType() == JumpType.EGG_JUMP || jump.getJumpType() == JumpType.SNOWBALL_JUMP) {
-			movingAmount = ball.getMovingAmount();
-			motionY = ball.getMotionY();
-		}
-		else {
-			movingAmount = ball.getMovingAmount() - 0.1F;
-			motionY = ball.getMotionY() + fallDistance / 100;
-		}
-		
-		float yaw = player.rotationYaw;
-		float pitch = player.rotationPitch;
-		double motionX = (double)(-MathHelper.sin(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
-		double motionZ = (double)(MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
-		
-		player.addVelocity(motionX, motionY, motionZ);
-		
-		if(jump.getJumpType() == JumpType.EGG_JUMP || jump.getJumpType() == JumpType.SNOWBALL_JUMP) {
-			if(player.inventory.hasItemStack(jump.getJumpType().getNeededItem()) && world.isRemote) {
-				int slot = player.inventory.getSlotFor(jump.getJumpType().getNeededItem());
-				BouncingBalls.network.sendToServer(new DecreaseStackPacket(slot));
-			}			
-			capability.setJumpsInAir(jumps + 1);
-            if(jump.getJumpType().getEntityThrowable() == "CustomEntityEgg") {
-	            world.spawnEntity(new EntityEgg(world, player));
-            }
-            else {
-	            world.spawnEntity(new EntitySnowball(world, player));
-            }
-            Random itemRand = new Random();
-			player.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-		}
-		else if(jump.getJumpType() == JumpType.DYNAMITE_JUMP) {
-			if(player.inventory.hasItemStack(jump.getJumpType().getNeededItem()) && world.isRemote) {
-				int slot = player.inventory.getSlotFor(jump.getJumpType().getNeededItem());
-				BouncingBalls.network.sendToServer(new DecreaseStackPacket(slot));
+		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
+		cap.ifPresent(c -> {
+			int jumps = c.jumpsInAir();
+			float fallDistance = c.fallDistance();
+			
+			float movingAmount;
+			double motionY;
+			if(jump.getJumpType() == JumpType.NORMAL || jump.getJumpType() == JumpType.EGG_JUMP || jump.getJumpType() == JumpType.SNOWBALL_JUMP) {
+				movingAmount = ball.getMovingAmount();
+				motionY = ball.getMotionY();
 			}
-			capability.setJumpsInAir(jumps + 1);
-			player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1, 1);
-			if(!world.isRemote) world.createExplosion(player, player.posX, player.posY, player.posZ, 0.75F, true);
-		}
-		else {
-			stack.damageItem(1, player);
-		    Random rand = new Random();
-		    float pitch1 = (float) (rand.nextFloat() * (1.1 - 0.9) + 0.9);
-		    if(ball.getID() == 19) {
-				player.playSound(SoundEvents.BLOCK_SLIME_PLACE, 1, pitch1);
-		    }
-		    else {
-				player.playSound(BouncingBalls.sound_bounce, 1, pitch1);
-		    }
-		}
+			else {
+				movingAmount = ball.getMovingAmount() - 0.1F;
+				motionY = ball.getMotionY() + fallDistance / 100;
+			}
+			
+			float yaw = player.rotationYaw;
+			float pitch = player.rotationPitch;
+			double motionX = (double)(-MathHelper.sin(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
+			double motionZ = (double)(MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
+			
+			player.addVelocity(motionX, motionY, motionZ);
+			
+			
+			if (jump.getJumpType() != JumpType.NORMAL && jump.getJumpType() != JumpType.FALL_JUMP) {
+				if(player.inventory.hasItemStack(jump.getJumpType().getRequiredItem()) && world.isRemote) {
+					int slot = player.inventory.getSlotFor(jump.getJumpType().getRequiredItem());
+					BouncingBallsPacketHandler.INSTANCE.sendToServer(new DecreaseItemStackPacket(slot));
+				}
+				c.setJumpsInAir(jumps + 1);
+				
+				switch (jump.getJumpType()) {
+				case EGG_JUMP:
+			        if (!world.isRemote) world.spawnEntity(new EntityEgg(world, player));
+		            
+		            Random r0 = new Random();
+					player.playSound(SoundEvents.ENTITY_EGG_THROW, 0.5F, 0.4F / (r0.nextFloat() * 0.4F + 0.8F));
+					break;
+				case SNOWBALL_JUMP:        
+			        if (!world.isRemote) world.spawnEntity(new EntitySnowball(world, player));
+		            
+		            Random r1 = new Random();
+					player.playSound(SoundEvents.ENTITY_SNOWBALL_THROW, 0.5F, 0.4F / (r1.nextFloat() * 0.4F + 0.8F));
+					break;
+				case DYNAMITE_JUMP:
+					player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1, 1);
+					if (!world.isRemote) world.createExplosion(player, player.posX, player.posY, player.posZ, 0.75F, true);
+					break;
+				default:
+					break;
+				}
+			}
+			else {
+				stack.damageItem(1, player);
+			    Random rand = new Random();
+			    float pitch1 = (float) (rand.nextFloat() * (1.1 - 0.9) + 0.9);
+			    if(ball.getID() == 19) {
+					player.playSound(SoundEvents.BLOCK_SLIME_BLOCK_FALL, 1, pitch1);
+			    }
+			    else {
+					player.playSound(BouncingBalls.sound_bounce, 1, pitch1);
+			    }
+			}
+		});		
 	}
-    
-    private static boolean stackEqualExact(ItemStack stack1, ItemStack stack2) {
-        return stack1.getItem() == stack2.getItem() && (!stack1.getHasSubtypes() || stack1.getMetadata() == stack2.getMetadata()) && ItemStack.areItemStackTagsEqual(stack1, stack2);
-    }
 }
 
