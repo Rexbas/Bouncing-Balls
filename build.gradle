@@ -20,7 +20,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "2.0.0"
+version = "2.0.1"
 
 minecraft {
     version = "1.9.4-12.17.0.2051"

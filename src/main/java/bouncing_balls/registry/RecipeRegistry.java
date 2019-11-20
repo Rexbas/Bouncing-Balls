@@ -1,13 +1,12 @@
 package bouncing_balls.registry;
 
+import bouncing_balls.BouncingBalls;
+import bouncing_balls.item.BouncingBall;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import bouncing_balls.BouncingBalls;
-import bouncing_balls.item.BouncingBall;
-import bouncing_balls.item.BallType;
 
 public class RecipeRegistry {
 
@@ -149,5 +148,15 @@ public class RecipeRegistry {
 			"SSS",
 			'S', Items.SLIME_BALL, 'N', Items.NETHER_STAR
 		});
+		
+		//QuartzBouncingBall
+		for(int i = 0; i <= 15; i++) {
+			GameRegistry.addRecipe(new ItemStack(BouncingBalls.quartzBouncingBall), new Object[] {
+				"QQQ",
+				"QBQ",
+				"QQQ",
+				'B', BouncingBall.returnByID(i), 'Q', Items.QUARTZ
+			});
+		}
 	}
 }

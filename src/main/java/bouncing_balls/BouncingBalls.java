@@ -9,6 +9,7 @@ import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.packet.DecreaseStackHandler;
 import bouncing_balls.packet.DecreaseStackPacket;
 import bouncing_balls.registry.ItemRegistry;
+import bouncing_balls.registry.RecipeRegistry;
 import bouncing_balls.tab.TabBouncingBalls;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -108,6 +109,7 @@ public class BouncingBalls {
     	CapabilityManager.INSTANCE.register(IBB_CAP.class, new BB_CAPStorage(), BB_CAPProvider.class);
     	
     	ItemRegistry.registerItems();
+    	RecipeRegistry.registerRecipes();
     	
     	commonProxy.registerRenders();
     }
