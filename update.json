@@ -1,6 +1,9 @@
 { 
         "homepage": "https://www.curseforge.com/minecraft/mc-mods/bouncing-balls/files", 
         "promos": { 
+                "1.13.2-latest": "5.0.0",
+                "1.13.2-recommended": "5.0.0",
+                
                 "1.12.2-latest": "4.0.0",
                 "1.12.2-recommended": "4.0.0",
                 "1.12.1-latest": "4.0.0",
@@ -20,6 +23,9 @@
                 
                 "1.9.4-latest": "2.0.0",
                 "1.9.4-recommended": "2.0.0"
+        },
+        "1.13.2": {
+                "5.0.0": ""
         }, 
         "1.12.2": {
                 "4.0.0": ""
