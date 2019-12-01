@@ -26,7 +26,6 @@ public class BouncingBalls {
     public static BouncingBalls instance;
 
 	public static final String MODID = "bouncing_balls";
-	public static final String MODNAME = "Bouncing Balls";
 		
 	public static BouncingBallsEventHandler bouncingBallsEventHandler = new BouncingBallsEventHandler();
 
@@ -85,8 +84,8 @@ public class BouncingBalls {
     public void setup(final FMLCommonSetupEvent event) {
     	BouncingBallsPacketHandler.register();
 
-    	MinecraftForge.EVENT_BUS.register(instance);
-    	MinecraftForge.EVENT_BUS.register(bouncingBallsEventHandler);
+    	//MinecraftForge.EVENT_BUS.register(instance);
+    	//MinecraftForge.EVENT_BUS.register(bouncingBallsEventHandler);
     	
     	CapabilityManager.INSTANCE.register(IJumpCapability.class, new JumpCapabilityStorage(), JumpCapability::new);
     }

@@ -1,7 +1,6 @@
 package bouncing_balls.item;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.capability.IJumpCapability;
@@ -56,7 +55,6 @@ public class BouncingBall extends Item {
 		BouncingBall ball = (BouncingBall) stack.getItem();
 		
 		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
-		AtomicReference<ActionResultType> ar = new AtomicReference<>();
 		
 		if (!cap.isPresent()) {
 	        return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
@@ -71,7 +69,6 @@ public class BouncingBall extends Item {
 					if(ball.getID() == 26) {
 						player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
 					}
-					ar.set(ActionResultType.SUCCESS);
 					return;
 				}
 			}
@@ -81,7 +78,6 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.EGG), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.EGG_JUMP);
 					JumpHandler.jump(jump);
-			        ar.set(ActionResultType.SUCCESS);
 			        return;
 				}
 			}
@@ -89,7 +85,6 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.SNOWBALL), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.SNOWBALL_JUMP);
 					JumpHandler.jump(jump);
-			        ar.set(ActionResultType.SUCCESS);
 			        return;
 				}
 			}
@@ -97,13 +92,12 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.GUNPOWDER), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.DYNAMITE_JUMP);
 					JumpHandler.jump(jump);
-			        ar.set(ActionResultType.SUCCESS);
 			        return;
 				}
 			}
 		});
 		
-		return new ActionResult<ItemStack>(ar.get(), stack);
+		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
     }
 		
 	@Override

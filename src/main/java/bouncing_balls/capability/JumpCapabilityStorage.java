@@ -3,8 +3,9 @@ package bouncing_balls.capability;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.Capability.IStorage;
 
-public class JumpCapabilityStorage implements Capability.IStorage<IJumpCapability> {
+public class JumpCapabilityStorage implements IStorage<IJumpCapability> {
 
 	@Override
 	public void readNBT(Capability<IJumpCapability> cap, IJumpCapability instance, Direction side, INBT nbt) {

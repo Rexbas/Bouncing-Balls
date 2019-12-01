@@ -18,9 +18,7 @@ public class JumpCapability implements IJumpCapability {
 		if(player.onGround && !player.isInWater() && !player.isInLava()) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
 	@Override
@@ -29,9 +27,7 @@ public class JumpCapability implements IJumpCapability {
 				player.inventory.hasItemStack(requiredItem) && this.jumpsInAir < 2) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
 	@Override
