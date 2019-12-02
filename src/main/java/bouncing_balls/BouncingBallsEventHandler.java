@@ -2,6 +2,7 @@ package bouncing_balls;
 
 import bouncing_balls.capability.IJumpCapability;
 import bouncing_balls.capability.JumpProvider;
+import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
@@ -67,19 +68,19 @@ public class BouncingBallsEventHandler {
 					
 				if(ball != null && ballStack != null) {	
 					if(c.canJump(player)) {
-						if(ball.getID() != 16 && ball.getID() != 17 && ball.getID() != 18 && fallDistance >= ball.getFallJumpHeight()) {
+						if(ball.getBallType() != BallType.EGG && ball.getBallType() != BallType.SNOW && ball.getBallType() != BallType.DYNAMITE && fallDistance >= ball.getFallJumpHeight()) {
 							BouncingBallJump jump = new BouncingBallJump(player, ballStack, JumpType.FALL_JUMP);
 							JumpHandler.jump(jump);
 						}
-						if(ball.getID() == 16 && fallDistance >= ball.getFallJumpHeight()) {
+						if(ball.getBallType() == BallType.EGG && fallDistance >= ball.getFallJumpHeight()) {
 							BouncingBallJump jump = new BouncingBallJump(player, ballStack, JumpType.EGG_JUMP);
 							JumpHandler.jump(jump);
 						}
-						if(ball.getID() == 17 && fallDistance >= ball.getFallJumpHeight()) {
+						if(ball.getBallType() == BallType.SNOW && fallDistance >= ball.getFallJumpHeight()) {
 							BouncingBallJump jump = new BouncingBallJump(player, ballStack, JumpType.SNOWBALL_JUMP);
 							JumpHandler.jump(jump);
 						}
-						if(ball.getID() == 18 && fallDistance >= ball.getFallJumpHeight()) {
+						if(ball.getBallType() == BallType.DYNAMITE && fallDistance >= ball.getFallJumpHeight()) {
 							BouncingBallJump jump = new BouncingBallJump(player, ballStack, JumpType.DYNAMITE_JUMP);
 							JumpHandler.jump(jump);
 						}

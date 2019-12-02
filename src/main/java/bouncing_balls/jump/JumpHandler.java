@@ -5,6 +5,7 @@ import java.util.Random;
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.capability.IJumpCapability;
 import bouncing_balls.capability.JumpProvider;
+import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.network.BouncingBallsPacketHandler;
 import bouncing_balls.network.packets.DecreaseItemStackPacket;
@@ -82,7 +83,7 @@ public class JumpHandler {
 				stack.damageItem(1, player, (p) -> {});
 			    Random rand = new Random();
 			    float pitch1 = (float) (rand.nextFloat() * (1.1 - 0.9) + 0.9);
-			    if(ball.getID() == 19) {
+			    if(ball.getBallType() == BallType.SLIME) {
 					player.playSound(SoundEvents.BLOCK_SLIME_BLOCK_FALL, 1, pitch1);
 			    }
 			    else {

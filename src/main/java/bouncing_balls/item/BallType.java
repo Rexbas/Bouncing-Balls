@@ -15,12 +15,12 @@ public enum BallType {
 	GOLD(250, 0.75F, 0.8F, Items.GOLD_INGOT, 10F),
 	IRON(300, 0.9F, 0.9F, Items.IRON_INGOT, 10F),
 	DIAMOND(400, 1.0F, 1.0F, Items.DIAMOND, 10F),
-	OBSIDIAN(500, 1.0F, 0.75F, Item.getItemFromBlock(Blocks.OBSIDIAN), 10F),
+	OBSIDIAN(500, 1.0F, 0.75F, 	Item.BLOCK_TO_ITEM.get(Blocks.OBSIDIAN), 10F),
 	EMERALD(600, 1.25F, 1.5F, Items.EMERALD, 16F),
 	NETHER_STAR(2500, 1.75F, 1.5F, Items.NETHER_STAR, 18F),
 	QUARTZ(550, 1.0F, 0.8F, Items.QUARTZ, 10F),
 	NORMAL(100, 0.5F, 0.65F, Items.SLIME_BALL, 10F);
-		
+	
 	private int maxDamage;
 	private float movingAmount;
 	private float motionY;
