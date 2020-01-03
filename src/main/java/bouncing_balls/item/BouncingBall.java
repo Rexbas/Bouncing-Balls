@@ -76,7 +76,7 @@ public class BouncingBall extends Item {
 				if(c.canJump(player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.NORMAL);
 					JumpHandler.jump(jump);
-					ar.set(ActionResultType.SUCCESS);
+					ar.set(ActionResultType.PASS);
 					if(ball.getBallType() == BallType.OBSIDIAN) {
 						player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
 					}
@@ -89,7 +89,7 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.EGG), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.EGG_JUMP);
 					JumpHandler.jump(jump);
-					ar.set(ActionResultType.SUCCESS);
+					ar.set(ActionResultType.PASS);
 			        return;
 				}
 			}
@@ -97,7 +97,7 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.SNOWBALL), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.SNOWBALL_JUMP);
 					JumpHandler.jump(jump);
-					ar.set(ActionResultType.SUCCESS);
+					ar.set(ActionResultType.PASS);
 			        return;
 				}
 			}
@@ -105,7 +105,7 @@ public class BouncingBall extends Item {
 				if(c.canJumpInAir(new ItemStack(Items.GUNPOWDER), player) && c.check(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.DYNAMITE_JUMP);
 					JumpHandler.jump(jump);
-					ar.set(ActionResultType.SUCCESS);
+					ar.set(ActionResultType.PASS);
 			        return;
 				}
 			}

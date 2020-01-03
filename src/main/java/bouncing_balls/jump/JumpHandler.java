@@ -50,7 +50,6 @@ public class JumpHandler {
 			
 			player.addVelocity(motionX, motionY, motionZ);
 			
-			
 			if (jump.getJumpType() != JumpType.NORMAL && jump.getJumpType() != JumpType.FALL_JUMP) {
 				if(player.inventory.hasItemStack(jump.getJumpType().getRequiredItem()) && world.isRemote) {
 					int slot = player.inventory.getSlotFor(jump.getJumpType().getRequiredItem());
@@ -61,19 +60,17 @@ public class JumpHandler {
 				switch (jump.getJumpType()) {
 				case EGG_JUMP:
 			        if (!world.isRemote) world.addEntity(new EggEntity(world, player));
-		            
 		            Random r0 = new Random();
 					player.playSound(SoundEvents.ENTITY_EGG_THROW, 0.5F, 0.4F / (r0.nextFloat() * 0.4F + 0.8F));
 					break;
 				case SNOWBALL_JUMP:        
 			        if (!world.isRemote) world.addEntity(new SnowballEntity(world, player));
-		            
 		            Random r1 = new Random();
 					player.playSound(SoundEvents.ENTITY_SNOWBALL_THROW, 0.5F, 0.4F / (r1.nextFloat() * 0.4F + 0.8F));
 					break;
 				case DYNAMITE_JUMP:
 					player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1, 1);
-					if (!world.isRemote) world.createExplosion(player, player.posX, player.posY, player.posZ, 0.75F, false, Explosion.Mode.BREAK);
+					if (!world.isRemote) world.createExplosion(player, player.prevPosX, player.prevPosY, player.prevPosZ, 0.75F, false, Explosion.Mode.BREAK);
 					break;
 				default:
 					break;
