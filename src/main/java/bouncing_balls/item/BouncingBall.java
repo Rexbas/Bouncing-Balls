@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import bouncing_balls.BouncingBalls;
-import bouncing_balls.capability.IJumpCapability;
-import bouncing_balls.capability.JumpProvider;
+import bouncing_balls.common.capabilities.IJumpCapability;
+import bouncing_balls.common.capabilities.JumpProvider;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
@@ -43,7 +43,7 @@ public class BouncingBall extends Item {
 	public BouncingBall(BallType type, String name) {
 		super(new Item.Properties()
 				.maxStackSize(1)
-				.group(BouncingBalls.itemGroup)
+				.group(BouncingBalls.ITEMGROUP)
 				.defaultMaxDamage(type.getMaxDamage()));
 		
 		this.ballType = type;

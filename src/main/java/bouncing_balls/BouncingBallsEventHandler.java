@@ -1,7 +1,7 @@
 package bouncing_balls;
 
-import bouncing_balls.capability.IJumpCapability;
-import bouncing_balls.capability.JumpProvider;
+import bouncing_balls.common.capabilities.IJumpCapability;
+import bouncing_balls.common.capabilities.JumpProvider;
 import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.BouncingBallJump;
@@ -16,18 +16,20 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid = BouncingBalls.MODID)
 public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
-	public void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	
+	public static void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	
 		if(event.getObject() instanceof PlayerEntity) {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.jump"), new JumpProvider());
 		}
 	}
 	
 	@SubscribeEvent
-	public void onLivingUpdate(LivingUpdateEvent event) {
+	public static void onLivingUpdate(LivingUpdateEvent event) {
 		if(event.getEntityLiving() instanceof PlayerEntity) {			
 			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 			
@@ -98,7 +100,7 @@ public class BouncingBallsEventHandler {
 	
 	
 	@SubscribeEvent
-	public void onPlayerFall(LivingFallEvent event) {
+	public static void onPlayerFall(LivingFallEvent event) {
 		if(event.getEntityLiving() instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 			if(player.getHeldItemMainhand() != null) {
