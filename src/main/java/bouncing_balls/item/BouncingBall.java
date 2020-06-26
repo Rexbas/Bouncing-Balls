@@ -20,8 +20,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.LazyOptional;
@@ -122,14 +123,14 @@ public class BouncingBall extends Item {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		if(this.getBallType() == BallType.EGG) {
-			list.add(new StringTextComponent("\u00A77").appendSibling(new TranslationTextComponent("bouncing_balls.egg.tooltip")));
+			list.add(new TranslationTextComponent("bouncing_balls.egg.tooltip").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.SNOW) {
-			list.add(new StringTextComponent("\u00A77").appendSibling(new TranslationTextComponent("bouncing_balls.snow.tooltip")));
+			list.add(new TranslationTextComponent("bouncing_balls.snow.tooltip").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.DYNAMITE) {
-			list.add(new StringTextComponent("\u00A77").appendSibling(new TranslationTextComponent("bouncing_balls.dynamite.tooltip")));
-			list.add(new StringTextComponent("\u00A74").appendSibling(new TranslationTextComponent("bouncing_balls.dynamite.warning")));
+			list.add(new TranslationTextComponent("bouncing_balls.dynamite.tooltip").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.dynamite.warning").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAA0000))));
 		}
     }
 		
