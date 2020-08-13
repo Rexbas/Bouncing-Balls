@@ -123,14 +123,14 @@ public class BouncingBall extends Item {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		if(this.getBallType() == BallType.EGG) {
-			list.add(new TranslationTextComponent("bouncing_balls.egg.tooltip").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.egg.tooltip").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.SNOW) {
-			list.add(new TranslationTextComponent("bouncing_balls.snow.tooltip").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.snow.tooltip").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.DYNAMITE) {
-			list.add(new TranslationTextComponent("bouncing_balls.dynamite.tooltip").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAAAAAA))));
-			list.add(new TranslationTextComponent("bouncing_balls.dynamite.warning").func_230530_a_(Style.field_240709_b_.func_240718_a_(Color.func_240743_a_(0xAA0000))));
+			list.add(new TranslationTextComponent("bouncing_balls.dynamite.tooltip").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.dynamite.warning").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAA0000))));
 		}
     }
 		

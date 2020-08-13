@@ -39,13 +39,13 @@ public class BouncingBallsEventHandler {
 				
 				int ticks = c.ticksOnGround();
 				
-				if(player.func_233570_aj_() && ticks < 50) {
+				if(player.isOnGround() && ticks < 50) {
 					c.setTicksOnGround(ticks + 1);
 				}
-				if(!player.func_233570_aj_() && ticks != 0) {
+				if(!player.isOnGround() && ticks != 0) {
 					c.setTicksOnGround(0);
 				}
-				if(player.func_233570_aj_()) {
+				if(player.isOnGround()) {
 					c.setJumpsInAir(0);
 				}
 				if(player.fallDistance > fallDistance) {
@@ -88,7 +88,7 @@ public class BouncingBallsEventHandler {
 						}
 					}
 				}
-				if(player.func_233570_aj_()) {
+				if(player.isOnGround()) {
 					c.setFallDistance(0);
 				}
 				if(player.isInWater() || player.isInLava()) {
