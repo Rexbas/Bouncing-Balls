@@ -29,7 +29,7 @@ public class DecreaseItemStackPacket {
 	public static void handle(DecreaseItemStackPacket msg, Supplier<NetworkEvent.Context> context) {
 		context.get().enqueueWork(() -> {
 			ServerPlayerEntity player = context.get().getSender();
-			player.inventory.decrStackSize(msg.getSlot(), 1);
+			player.inventory.removeItem(msg.getSlot(), 1);
 		});
 		context.get().setPacketHandled(true);
 	}

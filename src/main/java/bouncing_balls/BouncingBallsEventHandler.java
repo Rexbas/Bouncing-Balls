@@ -33,7 +33,7 @@ public class BouncingBallsEventHandler {
 		if(event.getEntityLiving() instanceof PlayerEntity) {			
 			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 			
-			LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
+			LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
 			cap.ifPresent(c -> {
 				float fallDistance = c.fallDistance();
 				
@@ -54,18 +54,18 @@ public class BouncingBallsEventHandler {
 				
 				BouncingBall ball = null;
 				ItemStack ballStack = null;
-				if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall &&
-						player.getHeldItemOffhand() != null && player.getHeldItemOffhand().getItem() instanceof BouncingBall) {
-					ball = (BouncingBall) player.getHeldItemMainhand().getItem();
-					ballStack = player.getHeldItemMainhand(); 
+				if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall &&
+						player.getOffhandItem() != null && player.getOffhandItem().getItem() instanceof BouncingBall) {
+					ball = (BouncingBall) player.getMainHandItem().getItem();
+					ballStack = player.getMainHandItem(); 
 				}
-				else if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
-					ball = (BouncingBall) player.getHeldItemMainhand().getItem();
-					ballStack = player.getHeldItemMainhand();
+				else if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall) {
+					ball = (BouncingBall) player.getMainHandItem().getItem();
+					ballStack = player.getMainHandItem();
 				}
-				else if(player.getHeldItemOffhand() != null && player.getHeldItemOffhand().getItem() instanceof BouncingBall) {
-					ball = (BouncingBall) player.getHeldItemOffhand().getItem();
-					ballStack = player.getHeldItemOffhand();
+				else if(player.getOffhandItem() != null && player.getOffhandItem().getItem() instanceof BouncingBall) {
+					ball = (BouncingBall) player.getOffhandItem().getItem();
+					ballStack = player.getOffhandItem();
 				}
 					
 				if(ball != null && ballStack != null) {	
@@ -103,13 +103,13 @@ public class BouncingBallsEventHandler {
 	public static void onPlayerFall(LivingFallEvent event) {
 		if(event.getEntityLiving() instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
-			if(player.getHeldItemMainhand() != null) {
-				if(player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
+			if(player.getMainHandItem() != null) {
+				if(player.getMainHandItem().getItem() instanceof BouncingBall) {
 					event.setCanceled(true);
 				}
 			}
-			if(player.getHeldItemOffhand() != null) {
-				if(player.getHeldItemOffhand().getItem() instanceof BouncingBall) {
+			if(player.getOffhandItem() != null) {
+				if(player.getOffhandItem().getItem() instanceof BouncingBall) {
 					event.setCanceled(true);
 				}
 			}

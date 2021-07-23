@@ -43,9 +43,9 @@ public class BouncingBall extends Item {
 	
 	public BouncingBall(BallType type, String name) {
 		super(new Item.Properties()
-				.maxStackSize(1)
-				.group(BouncingBalls.ITEMGROUP)
-				.defaultMaxDamage(type.getMaxDamage()));
+				.stacksTo(1)
+				.tab(BouncingBalls.ITEMGROUP)
+				.defaultDurability(type.getMaxDamage()));
 		
 		this.ballType = type;
 		this.movingAmount = getBallType().getMovingAmount();
@@ -54,16 +54,16 @@ public class BouncingBall extends Item {
 	}
 	
 	@Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-    	ItemStack stack = player.getHeldItem(hand);
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+    	ItemStack stack = player.getItemInHand(hand);
     	
-    	if(hand == Hand.OFF_HAND && player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
+    	if(hand == Hand.OFF_HAND && player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall) {
 	        return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
 		}
 		
 		BouncingBall ball = (BouncingBall) stack.getItem();
 		
-		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getHorizontalFacing());
+		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
 		AtomicReference<ActionResultType> ar = new AtomicReference<>();
 		ar.set(ActionResultType.FAIL);
 		
@@ -79,7 +79,7 @@ public class BouncingBall extends Item {
 					JumpHandler.jump(jump);
 					ar.set(ActionResultType.PASS);
 					if(ball.getBallType() == BallType.OBSIDIAN) {
-						player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
+						player.addEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
 					}
 					return;
 				}
@@ -116,21 +116,21 @@ public class BouncingBall extends Item {
     }
 		
 	@Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == getBallType().getRepairItem();
     }
 	
 	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		if(this.getBallType() == BallType.EGG) {
-			list.add(new TranslationTextComponent("bouncing_balls.egg.tooltip").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.egg.tooltip").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.SNOW) {
-			list.add(new TranslationTextComponent("bouncing_balls.snow.tooltip").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.snow.tooltip").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.DYNAMITE) {
-			list.add(new TranslationTextComponent("bouncing_balls.dynamite.tooltip").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAAAAAA))));
-			list.add(new TranslationTextComponent("bouncing_balls.dynamite.warning").setStyle(Style.EMPTY.setColor(Color.func_240743_a_(0xAA0000))));
+			list.add(new TranslationTextComponent("bouncing_balls.dynamite.tooltip").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAAAAAA))));
+			list.add(new TranslationTextComponent("bouncing_balls.dynamite.warning").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAA0000))));
 		}
     }
 		

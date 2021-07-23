@@ -29,6 +29,6 @@ public class BouncingBallJump {
 	
 	@Override
 	public String toString() {
-		return "BouncingBallJump[" + getPlayer().getName() + ", " + getItemStack().getDisplayName() + ", "+ getJumpType().toString() + "]";
+		return "BouncingBallJump[" + getPlayer().getName() + ", " + getItemStack().getHoverName() + ", "+ getJumpType().toString() + "]";
 	}
 }

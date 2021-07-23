@@ -24,7 +24,7 @@ public class JumpCapability implements IJumpCapability {
 	@Override
 	public boolean canJumpInAir(ItemStack requiredItem, PlayerEntity player) {
 		if(!player.isInWater() && !player.isInLava() &&
-				player.inventory.hasItemStack(requiredItem) && this.jumpsInAir < 2) {
+				player.inventory.contains(requiredItem) && this.jumpsInAir < 2) {
 			return true;
 		}
 		return false;
@@ -54,15 +54,15 @@ public class JumpCapability implements IJumpCapability {
 	@Override
 	public boolean check(PlayerEntity player) {
 		BouncingBall ball = null;
-		if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall &&
-				player.getHeldItemOffhand() != null && player.getHeldItemOffhand().getItem() instanceof BouncingBall) {
-			ball = (BouncingBall) player.getHeldItemMainhand().getItem();
+		if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall &&
+				player.getOffhandItem() != null && player.getOffhandItem().getItem() instanceof BouncingBall) {
+			ball = (BouncingBall) player.getMainHandItem().getItem();
 		}
-		else if(player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() instanceof BouncingBall) {
-			ball = (BouncingBall) player.getHeldItemMainhand().getItem();
+		else if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall) {
+			ball = (BouncingBall) player.getMainHandItem().getItem();
 		}
 		else {
-			ball = (BouncingBall) player.getHeldItemOffhand().getItem();
+			ball = (BouncingBall) player.getOffhandItem().getItem();
 		}
 		
 		float height = ball.getFallJumpHeight();
