@@ -19,7 +19,6 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -33,15 +32,15 @@ public class BouncingBall extends Item {
 	protected float movingAmount;
 	protected double motionY;
 	
-	public static BouncingBall buildBall(BallType type, String name) {
-		return new BouncingBall(type, name);
+	public static BouncingBall buildBall(BallType type) {
+		return new BouncingBall(type);
 	}
 	
-	public static BouncingBall buildBall(String name) {
-		return buildBall(BallType.NORMAL, name);
+	public static BouncingBall buildBall() {
+		return buildBall(BallType.NORMAL);
 	}
 	
-	public BouncingBall(BallType type, String name) {
+	public BouncingBall(BallType type) {
 		super(new Item.Properties()
 				.stacksTo(1)
 				.tab(BouncingBalls.ITEMGROUP)
@@ -50,7 +49,6 @@ public class BouncingBall extends Item {
 		this.ballType = type;
 		this.movingAmount = getBallType().getMovingAmount();
 		this.motionY = getBallType().getMotionY();
-		this.setRegistryName(new ResourceLocation(BouncingBalls.MODID, name));
 	}
 	
 	@Override

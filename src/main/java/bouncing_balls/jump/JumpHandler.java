@@ -2,9 +2,9 @@ package bouncing_balls.jump;
 
 import java.util.Random;
 
-import bouncing_balls.BouncingBalls;
 import bouncing_balls.common.capabilities.IJumpCapability;
 import bouncing_balls.common.capabilities.JumpProvider;
+import bouncing_balls.init.BouncingBallsSounds;
 import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.network.BouncingBallsPacketHandler;
@@ -84,7 +84,7 @@ public class JumpHandler {
 					player.playSound(SoundEvents.SLIME_BLOCK_FALL, 1, pitch1);
 			    }
 			    else {
-					player.playSound(BouncingBalls.BOUNCE, 1, pitch1);
+					player.playSound(BouncingBallsSounds.BOUNCE.get(), 1, pitch1);
 			    }
 			}
 		});		

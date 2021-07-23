@@ -1,6 +1,6 @@
 package bouncing_balls.itemgroup;
 
-import bouncing_balls.item.BallList;
+import bouncing_balls.init.BouncingBallsItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -12,6 +12,6 @@ public class ItemGroupBouncingBalls extends ItemGroup {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(BallList.RED);
+		return new ItemStack(BouncingBallsItems.RED.get());
 	}
 }
