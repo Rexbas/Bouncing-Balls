@@ -2,9 +2,9 @@ package bouncing_balls.network;
 
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.network.packets.DecreaseItemStackPacket;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.network.NetworkRegistry;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.fmllegacy.network.NetworkRegistry;
+import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
 
 public class BouncingBallsPacketHandler {
 
@@ -19,5 +19,4 @@ public class BouncingBallsPacketHandler {
 	public static void register() {
 		INSTANCE.registerMessage(0, DecreaseItemStackPacket.class, DecreaseItemStackPacket::encode, DecreaseItemStackPacket::decode, DecreaseItemStackPacket::handle);
 	}
-	
 }

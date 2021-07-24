@@ -1,8 +1,8 @@
 package bouncing_balls.common.capabilities;
 
 import bouncing_balls.item.BouncingBall;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public class JumpCapability implements IJumpCapability {
 
@@ -14,7 +14,7 @@ public class JumpCapability implements IJumpCapability {
 	public JumpCapability() {}
 	
 	@Override
-	public boolean canJump(PlayerEntity player) {
+	public boolean canJump(Player player) {
 		if(player.isOnGround() && !player.isInWater() && !player.isInLava()) {
 			return true;
 		}
@@ -22,9 +22,9 @@ public class JumpCapability implements IJumpCapability {
 	}
 	
 	@Override
-	public boolean canJumpInAir(ItemStack requiredItem, PlayerEntity player) {
+	public boolean canJumpInAir(ItemStack requiredItem, Player player) {
 		if(!player.isInWater() && !player.isInLava() &&
-				player.inventory.contains(requiredItem) && this.jumpsInAir < 2) {
+				player.getInventory().contains(requiredItem) && this.jumpsInAir < 2) {
 			return true;
 		}
 		return false;
@@ -52,7 +52,7 @@ public class JumpCapability implements IJumpCapability {
 	}
 
 	@Override
-	public boolean check(PlayerEntity player) {
+	public boolean check(Player player) {
 		BouncingBall ball = null;
 		if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall &&
 				player.getOffhandItem() != null && player.getOffhandItem().getItem() instanceof BouncingBall) {

@@ -9,23 +9,23 @@ import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
 import bouncing_balls.network.BouncingBallsPacketHandler;
 import bouncing_balls.network.packets.DecreaseItemStackPacket;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.EggEntity;
-import net.minecraft.entity.projectile.SnowballEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrownEgg;
+import net.minecraft.world.entity.projectile.Snowball;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.LazyOptional;
 
 public class JumpHandler {
 	
 	public static void jump(BouncingBallJump jump) {
-		PlayerEntity player = jump.getPlayer();
+		Player player = jump.getPlayer();
 		ItemStack stack = jump.getItemStack();
 		BouncingBall ball = (BouncingBall) stack.getItem();
-		World world = player.level;
+		Level world = player.level;
 		
 		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
 		cap.ifPresent(c -> {
@@ -43,34 +43,34 @@ public class JumpHandler {
 				motionY = ball.getMotionY() + fallDistance / 100;
 			}
 			
-			float yaw = player.yRot;
-			float pitch = player.xRot;
-			double motionX = (double)(-MathHelper.sin(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
-			double motionZ = (double)(MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
+			float yaw = player.getYRot();
+			float pitch = player.getXRot();
+			double motionX = (double)(-Mth.sin(yaw / 180.0F * (float)Math.PI) * Mth.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
+			double motionZ = (double)(Mth.cos(yaw / 180.0F * (float)Math.PI) * Mth.cos(pitch / 180.0F * (float)Math.PI) * movingAmount);
 			
 			player.push(motionX, motionY, motionZ);
 			
 			if (jump.getJumpType() != JumpType.NORMAL && jump.getJumpType() != JumpType.FALL_JUMP) {
-				if(player.inventory.contains(jump.getJumpType().getRequiredItem()) && world.isClientSide) {
-					int slot = player.inventory.findSlotMatchingItem(jump.getJumpType().getRequiredItem());
+				if(player.getInventory().contains(jump.getJumpType().getRequiredItem()) && world.isClientSide) {
+					int slot = player.getInventory().findSlotMatchingItem(jump.getJumpType().getRequiredItem());
 					BouncingBallsPacketHandler.INSTANCE.sendToServer(new DecreaseItemStackPacket(slot));
 				}
 				c.setJumpsInAir(jumps + 1);
 				
 				switch (jump.getJumpType()) {
 				case EGG_JUMP:
-			        if (!world.isClientSide) world.addFreshEntity(new EggEntity(world, player));
+			        if (!world.isClientSide) world.addFreshEntity(new ThrownEgg(world, player));
 		            Random r0 = new Random();
 					player.playSound(SoundEvents.EGG_THROW, 0.5F, 0.4F / (r0.nextFloat() * 0.4F + 0.8F));
 					break;
 				case SNOWBALL_JUMP:        
-			        if (!world.isClientSide) world.addFreshEntity(new SnowballEntity(world, player));
+			        if (!world.isClientSide) world.addFreshEntity(new Snowball(world, player));
 		            Random r1 = new Random();
 					player.playSound(SoundEvents.SNOWBALL_THROW, 0.5F, 0.4F / (r1.nextFloat() * 0.4F + 0.8F));
 					break;
 				case DYNAMITE_JUMP:
 					player.playSound(SoundEvents.GENERIC_EXPLODE, 1, 1);
-					if (!world.isClientSide) world.explode(player, player.xo, player.yo, player.zo, 0.75F, false, Explosion.Mode.BREAK);
+					if (!world.isClientSide) world.explode(player, player.xo, player.yo, player.zo, 0.75F, false, Explosion.BlockInteraction.BREAK);
 					break;
 				default:
 					break;

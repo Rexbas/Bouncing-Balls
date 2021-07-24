@@ -7,10 +7,10 @@ import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -23,15 +23,15 @@ public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
 	public static void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	
-		if(event.getObject() instanceof PlayerEntity) {
+		if(event.getObject() instanceof Player) {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.jump"), new JumpProvider());
 		}
 	}
 	
 	@SubscribeEvent
 	public static void onLivingUpdate(LivingUpdateEvent event) {
-		if(event.getEntityLiving() instanceof PlayerEntity) {			
-			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+		if(event.getEntityLiving() instanceof Player) {			
+			Player player = (Player) event.getEntityLiving();
 			
 			LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
 			cap.ifPresent(c -> {
@@ -101,8 +101,8 @@ public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
 	public static void onPlayerFall(LivingFallEvent event) {
-		if(event.getEntityLiving() instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+		if(event.getEntityLiving() instanceof Player) {
+			Player player = (Player) event.getEntityLiving();
 			if(player.getMainHandItem() != null) {
 				if(player.getMainHandItem().getItem() instanceof BouncingBall) {
 					event.setCanceled(true);

@@ -3,9 +3,9 @@ package bouncing_balls.init;
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.item.BallType;
 import bouncing_balls.item.BouncingBall;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 

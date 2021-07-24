@@ -1,8 +1,8 @@
 package bouncing_balls.item;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public enum BallType {	
 	EGG(0.5F, 0.65F, 12F),

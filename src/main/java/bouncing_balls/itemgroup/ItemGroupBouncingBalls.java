@@ -1,10 +1,10 @@
 package bouncing_balls.itemgroup;
 
 import bouncing_balls.init.BouncingBallsItems;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
-public class ItemGroupBouncingBalls extends ItemGroup {
+public class ItemGroupBouncingBalls extends CreativeModeTab {
 
 	public ItemGroupBouncingBalls(String name) {
 		super(name);
