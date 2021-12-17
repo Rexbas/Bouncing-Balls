@@ -1,12 +1,10 @@
 package bouncing_balls;
 
-import bouncing_balls.common.capabilities.IJumpCapability;
 import bouncing_balls.init.BouncingBallsItems;
 import bouncing_balls.init.BouncingBallsSounds;
 import bouncing_balls.itemgroup.ItemGroupBouncingBalls;
 import bouncing_balls.network.BouncingBallsPacketHandler;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -25,6 +23,5 @@ public class BouncingBalls {
 	
     public void setup(final FMLCommonSetupEvent event) {
     	BouncingBallsPacketHandler.register();
-    	CapabilityManager.INSTANCE.register(IJumpCapability.class);
     }
 }

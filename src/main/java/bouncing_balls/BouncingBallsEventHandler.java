@@ -7,10 +7,11 @@ import bouncing_balls.item.BouncingBall;
 import bouncing_balls.jump.BouncingBallJump;
 import bouncing_balls.jump.JumpHandler;
 import bouncing_balls.jump.JumpType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -20,6 +21,11 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BouncingBalls.MODID)
 public class BouncingBallsEventHandler {
+	
+	@SubscribeEvent
+	public static void registerCapabilities(final RegisterCapabilitiesEvent event) {
+		event.register(IJumpCapability.class);
+	}
 	
 	@SubscribeEvent
 	public static void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	

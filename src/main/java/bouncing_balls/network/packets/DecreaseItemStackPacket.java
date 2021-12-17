@@ -1,10 +1,10 @@
 package bouncing_balls.network.packets;
 
+import java.util.function.Supplier;
+
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraftforge.network.NetworkEvent;
 
 public class DecreaseItemStackPacket {
 	private int slot;

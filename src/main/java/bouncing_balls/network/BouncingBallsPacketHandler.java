@@ -3,8 +3,8 @@ package bouncing_balls.network;
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.network.packets.DecreaseItemStackPacket;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fmllegacy.network.NetworkRegistry;
-import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 public class BouncingBallsPacketHandler {
 
