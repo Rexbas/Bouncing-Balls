@@ -15,6 +15,6 @@ public class DataGenerators {
 		DataGenerator gen = event.getGenerator();
 		ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
-        gen.addProvider(new BouncingBallsItemModelProvider(gen, fileHelper));
+        gen.addProvider(event.includeClient(), new BouncingBallsItemModelProvider(gen, fileHelper));
 	}
 }

@@ -12,7 +12,6 @@ import bouncing_balls.jump.JumpType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -121,14 +120,14 @@ public class BouncingBall extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
 		if(this.getBallType() == BallType.EGG) {
-			list.add(new TranslatableComponent("bouncing_balls.egg.tooltip").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA))));
+			list.add(Component.translatable("bouncing_balls.egg.tooltip").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.SNOW) {
-			list.add(new TranslatableComponent("bouncing_balls.snow.tooltip").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA))));
+			list.add(Component.translatable("bouncing_balls.snow.tooltip").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA))));
 		}
 		else if(this.getBallType() == BallType.DYNAMITE) {
-			list.add(new TranslatableComponent("bouncing_balls.dynamite.tooltip").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA))));
-			list.add(new TranslatableComponent("bouncing_balls.dynamite.warning").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAA0000))));
+			list.add(Component.translatable("bouncing_balls.dynamite.tooltip").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAAAAAA))));
+			list.add(Component.translatable("bouncing_balls.dynamite.warning").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAA0000))));
 		}
     }
 		

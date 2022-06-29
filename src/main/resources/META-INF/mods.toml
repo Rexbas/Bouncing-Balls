@@ -8,7 +8,7 @@
 modLoader="javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[38,)" #mandatory
+loaderVersion="[41,)" #mandatory
 
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
@@ -39,7 +39,7 @@ updateJSONURL="https://raw.githubusercontent.com/Rexbas/Bouncing-Balls/update/up
 displayURL="https://www.curseforge.com/minecraft/mc-mods/bouncing-balls" #optional
 
 # A text field displayed in the mod UI
-credits="" #optional
+# credits="" #optional
 
 # A text field displayed in the mod UI
 authors="Rexbas" #optional
