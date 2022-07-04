@@ -12,7 +12,7 @@ loaderVersion="[32,)" #mandatory
 
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license="All rights reserved"
+license="GNU Lesser General Public License v3.0"
 
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/Rexbas/Bouncing-Balls/issues" #optional
@@ -39,7 +39,7 @@ updateJSONURL="https://raw.githubusercontent.com/Rexbas/Bouncing-Balls/update/up
 displayURL="https://www.curseforge.com/minecraft/mc-mods/bouncing-balls" #optional
 
 # A text field displayed in the mod UI
-credits="" #optional
+# credits="" #optional
 
 # A text field displayed in the mod UI
 authors="Rexbas" #optional
