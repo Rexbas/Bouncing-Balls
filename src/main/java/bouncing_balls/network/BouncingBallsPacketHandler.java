@@ -19,5 +19,4 @@ public class BouncingBallsPacketHandler {
 	public static void register() {
 		INSTANCE.registerMessage(0, DecreaseItemStackPacket.class, DecreaseItemStackPacket::encode, DecreaseItemStackPacket::decode, DecreaseItemStackPacket::handle);
 	}
-	
 }

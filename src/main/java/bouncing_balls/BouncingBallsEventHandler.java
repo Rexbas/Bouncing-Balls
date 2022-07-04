@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
-	public static void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	
+	public static void attachtCapability(AttachCapabilitiesEvent<Entity> event) {	
 		if(event.getObject() instanceof PlayerEntity) {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.jump"), new JumpProvider());
 		}

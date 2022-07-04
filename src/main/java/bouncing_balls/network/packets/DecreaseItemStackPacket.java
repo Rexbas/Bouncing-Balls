@@ -21,7 +21,6 @@ public class DecreaseItemStackPacket {
 		buf.writeInt(msg.slot);
 	}
 	
-	
 	public static DecreaseItemStackPacket decode(PacketBuffer buf) {
 		return new DecreaseItemStackPacket(buf.readInt());
 	}
