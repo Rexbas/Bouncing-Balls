@@ -26,21 +26,21 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.LazyOptional;
 
-public class BouncingBall extends Item {
+public class BouncingBallOld extends Item {
 	
 	private BallType ballType;
 	protected float movingAmount;
 	protected double motionY;
 	
-	public static BouncingBall buildBall(BallType type) {
-		return new BouncingBall(type);
+	public static BouncingBallOld buildBall(BallType type) {
+		return new BouncingBallOld(type);
 	}
 	
-	public static BouncingBall buildBall() {
+	public static BouncingBallOld buildBall() {
 		return buildBall(BallType.NORMAL);
 	}
 	
-	public BouncingBall(BallType type) {
+	public BouncingBallOld(BallType type) {
 		super(new Item.Properties()
 				.stacksTo(1)
 				.tab(BouncingBalls.ITEMGROUP)
@@ -55,11 +55,11 @@ public class BouncingBall extends Item {
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
     	ItemStack stack = player.getItemInHand(hand);
     	
-    	if(hand == Hand.OFF_HAND && player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall) {
+    	if(hand == Hand.OFF_HAND && player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBallOld) {
 	        return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
 		}
 		
-		BouncingBall ball = (BouncingBall) stack.getItem();
+		BouncingBallOld ball = (BouncingBallOld) stack.getItem();
 		
 		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
 		AtomicReference<ActionResultType> ar = new AtomicReference<>();
@@ -72,7 +72,7 @@ public class BouncingBall extends Item {
 		cap.ifPresent(c -> {
 			//Normal Balls
 			if(ball.getBallType() != BallType.EGG && ball.getBallType() != BallType.SNOW && ball.getBallType() != BallType.DYNAMITE) {
-				if(c.canJump(player) && c.check(player)) {
+				if(c.canJump(player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.NORMAL);
 					JumpHandler.jump(jump);
 					ar.set(ActionResultType.PASS);
@@ -85,7 +85,7 @@ public class BouncingBall extends Item {
 			
 			//Throwable Ammo Balls
 			if(ball.getBallType() == BallType.EGG) {
-				if(c.canJumpInAir(new ItemStack(Items.EGG), player) && c.check(player)) {
+				if(c.canJumpInAir(new ItemStack(Items.EGG), player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.EGG_JUMP);
 					JumpHandler.jump(jump);
 					ar.set(ActionResultType.PASS);
@@ -93,7 +93,7 @@ public class BouncingBall extends Item {
 				}
 			}
 			if(ball.getBallType() == BallType.SNOW) {
-				if(c.canJumpInAir(new ItemStack(Items.SNOWBALL), player) && c.check(player)) {
+				if(c.canJumpInAir(new ItemStack(Items.SNOWBALL), player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.SNOWBALL_JUMP);
 					JumpHandler.jump(jump);
 					ar.set(ActionResultType.PASS);
@@ -101,7 +101,7 @@ public class BouncingBall extends Item {
 				}
 			}
 			if(ball.getBallType() == BallType.DYNAMITE) {
-				if(c.canJumpInAir(new ItemStack(Items.GUNPOWDER), player) && c.check(player)) {
+				if(c.canJumpInAir(new ItemStack(Items.GUNPOWDER), player)) {
 					BouncingBallJump jump = new BouncingBallJump(player, stack, JumpType.DYNAMITE_JUMP);
 					JumpHandler.jump(jump);
 					ar.set(ActionResultType.PASS);

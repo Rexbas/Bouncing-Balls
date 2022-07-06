@@ -13,6 +13,5 @@ public class BouncingBallsSounds {
 	
 	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, BouncingBalls.MODID);
 	
-	public static final RegistryObject<SoundEvent> BOUNCE = SOUNDS.register("bounce",
-			() -> new SoundEvent(new ResourceLocation(BouncingBalls.MODID, "bounce")));
+	public static final RegistryObject<SoundEvent> BOUNCE = SOUNDS.register("bounce", () -> new SoundEvent(new ResourceLocation(BouncingBalls.MODID, "bounce")));
 }

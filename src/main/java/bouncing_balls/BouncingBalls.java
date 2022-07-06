@@ -1,5 +1,7 @@
 package bouncing_balls;
 
+import bouncing_balls.api.capability.BounceCapability;
+import bouncing_balls.api.capability.IBounceCapability;
 import bouncing_balls.common.capabilities.IJumpCapability;
 import bouncing_balls.common.capabilities.JumpCapability;
 import bouncing_balls.init.BouncingBallsItems;
@@ -44,9 +46,20 @@ public class BouncingBalls {
 			}
 
 			@Override
-			public void readNBT(Capability<IJumpCapability> capability, IJumpCapability instance, Direction side, INBT nbt) {
-
-			}
+			public void readNBT(Capability<IJumpCapability> capability, IJumpCapability instance, Direction side, INBT nbt) {}
+			
 		}, JumpCapability::new);
+    	
+    	CapabilityManager.INSTANCE.register(IBounceCapability.class, new IStorage<IBounceCapability>() {
+
+			@Override
+			public INBT writeNBT(Capability<IBounceCapability> capability, IBounceCapability instance, Direction side) {
+				return null;
+			}
+
+			@Override
+			public void readNBT(Capability<IBounceCapability> capability, IBounceCapability instance, Direction side, INBT nbt) {}
+			
+		}, BounceCapability::new);
 	}
 }

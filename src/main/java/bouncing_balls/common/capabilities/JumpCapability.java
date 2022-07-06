@@ -1,6 +1,5 @@
 package bouncing_balls.common.capabilities;
 
-import bouncing_balls.item.BouncingBall;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
@@ -49,30 +48,6 @@ public class JumpCapability implements IJumpCapability {
 	public void setFallDistance(float newFallDistance) {
 		this.fallDistance = newFallDistance;
 		if(newFallDistance >= 10) manualFallDistance = newFallDistance;
-	}
-
-	@Override
-	public boolean check(PlayerEntity player) {
-		BouncingBall ball = null;
-		if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall &&
-				player.getOffhandItem() != null && player.getOffhandItem().getItem() instanceof BouncingBall) {
-			ball = (BouncingBall) player.getMainHandItem().getItem();
-		}
-		else if(player.getMainHandItem() != null && player.getMainHandItem().getItem() instanceof BouncingBall) {
-			ball = (BouncingBall) player.getMainHandItem().getItem();
-		}
-		else {
-			ball = (BouncingBall) player.getOffhandItem().getItem();
-		}
-		
-		float height = ball.getFallJumpHeight();
-		if(this.ticksOnGround > 2 || manualFallDistance < height) {
-			manualFallDistance = 0;
-			return true;
-		}
-		else {
-			return false;
-		}
 	}
 
 	@Override

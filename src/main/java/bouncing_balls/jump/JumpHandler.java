@@ -6,7 +6,7 @@ import bouncing_balls.common.capabilities.IJumpCapability;
 import bouncing_balls.common.capabilities.JumpProvider;
 import bouncing_balls.init.BouncingBallsSounds;
 import bouncing_balls.item.BallType;
-import bouncing_balls.item.BouncingBall;
+import bouncing_balls.item.BouncingBallOld;
 import bouncing_balls.network.BouncingBallsPacketHandler;
 import bouncing_balls.network.packets.DecreaseItemStackPacket;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +24,7 @@ public class JumpHandler {
 	public static void jump(BouncingBallJump jump) {
 		PlayerEntity player = jump.getPlayer();
 		ItemStack stack = jump.getItemStack();
-		BouncingBall ball = (BouncingBall) stack.getItem();
+		BouncingBallOld ball = (BouncingBallOld) stack.getItem();
 		World world = player.level;
 		
 		LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
