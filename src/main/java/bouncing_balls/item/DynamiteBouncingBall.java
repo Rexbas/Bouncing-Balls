@@ -3,6 +3,7 @@ package bouncing_balls.item;
 import java.util.List;
 
 import bouncing_balls.BouncingBalls;
+import bouncing_balls.api.item.BouncingBall;
 import bouncing_balls.api.item.MultiBouncingBall;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -20,7 +21,7 @@ import net.minecraft.world.World;
 public class DynamiteBouncingBall extends MultiBouncingBall {
 
 	public DynamiteBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), Items.GUNPOWDER);
+		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f), 3, Items.GUNPOWDER);
 	}
 	
 	@Override

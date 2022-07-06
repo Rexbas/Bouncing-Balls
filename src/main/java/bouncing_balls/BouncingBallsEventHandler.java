@@ -15,6 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
@@ -30,6 +32,20 @@ public class BouncingBallsEventHandler {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.jump"), new JumpProvider());
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.bounce"), new BounceCapabilityProvider());
 		}
+	}
+	
+	@SubscribeEvent
+	public static void tick(PlayerTickEvent event) {
+		event.player.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).ifPresent(cap -> {
+			if (event.phase == TickEvent.Phase.START) {
+				cap.setStartTickOnGround(event.player.isOnGround());
+			}
+			else if (event.phase == TickEvent.Phase.END) {
+				if (cap.getConsecutiveBounces() > 0 && event.player.isOnGround() && cap.getStartTickOnGround()) {
+					cap.resetConsecutiveBounces();
+				}
+			}
+		});
 	}
 	
 	@SubscribeEvent
@@ -137,13 +153,6 @@ public class BouncingBallsEventHandler {
 			}
 			event.setDamageMultiplier(multiplier);
 			player.hurtMarked = true;
-			
-			if (multiplier != 0) {
-				System.out.println(multiplier);
-				player.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).ifPresent(cap -> {
-					System.out.println(player.level.getGameTime() + " fall event: " + cap.getConsecutiveBounces());
-				});
-			}
 		}
 		
 		

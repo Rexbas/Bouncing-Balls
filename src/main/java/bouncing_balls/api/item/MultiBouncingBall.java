@@ -11,25 +11,26 @@ import net.minecraft.item.Items;
 
 public class MultiBouncingBall extends BouncingBall {
 
+	protected int maxConsecutiveBounces;
 	protected ItemStack consumptionItem;
-	
-	public MultiBouncingBall(Properties properties, Item consumptionItem) {
-		super(properties);
+
+	public MultiBouncingBall(Item.Properties itemProperties, BouncingBall.Properties ballProperties, int maxConsecutiveBounces, Item consumptionItem) {
+		super(itemProperties, ballProperties);
+		this.maxConsecutiveBounces = maxConsecutiveBounces;
 		this.consumptionItem = new ItemStack(consumptionItem);
 	}
-	
-	public MultiBouncingBall(Properties properties) {
-		this(properties, Items.AIR);
+
+	public MultiBouncingBall(Item.Properties itemProperties, BouncingBall.Properties ballProperties, int maxConsecutiveBounces) {
+		this(itemProperties, ballProperties, maxConsecutiveBounces, Items.AIR);
 	}
-	
+
 	@Override
 	public boolean canBounce(Entity entity) {
-		// TODO values
 		PlayerEntity player = (PlayerEntity) entity;
 		IBounceCapability cap = player.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).orElse(new BounceCapability());
-		return cap.getConsecutiveBounces() < 3 && !entity.isInWater() && !entity.isInLava() && hasConsumptionItem(player);
+		return cap.getConsecutiveBounces() < this.maxConsecutiveBounces && !entity.isInWater() && !entity.isInLava() && hasConsumptionItem(player);
 	}
-	
+
 	/**
 	 * Add y-motion to the entity and reduce the consumption item if applicable.
 	 * IMPORTANT: If the consumption item is not Items.AIR, check if the inventory
@@ -42,25 +43,23 @@ public class MultiBouncingBall extends BouncingBall {
 	public void bounce(Entity entity, float motionY) {
 		super.bounce(entity, motionY);
 		PlayerEntity player = (PlayerEntity) entity;
-		
+
 		if (consumptionItem.getItem() != Items.AIR) {
 			int slot = player.inventory.findSlotMatchingItem(consumptionItem);
 			player.inventory.removeItem(slot, 1);
 		}
 	}
-	
+
 	@Override
 	public float onFall(PlayerEntity player, ItemStack stack, float fallDistance) {
-		// TODO values
-		if (fallDistance > 5) {
+		if (fallDistance > properties.rebounceHeight) {
 			float multiplier;
 			if (hasConsumptionItem(player)) {
-				bounce(player, 2f);
-				multiplier = 0.1f;
-			}
-			else {
-				super.bounce(player, 1f);
-				multiplier = 0.5f;
+				bounce(player, properties.upwardMotion);
+				multiplier = properties.damageMultiplier;
+			} else {
+				super.bounce(player, properties.upwardMotion / 2);
+				multiplier = properties.damageMultiplier * 2 > 1 ? 1 : properties.damageMultiplier * 2;
 			}
 
 			damageBall(player, stack);
@@ -69,7 +68,7 @@ public class MultiBouncingBall extends BouncingBall {
 		}
 		return 0f;
 	}
-	
+
 	protected boolean hasConsumptionItem(PlayerEntity player) {
 		return consumptionItem.getItem() == Items.AIR || player.inventory.contains(consumptionItem);
 	}
