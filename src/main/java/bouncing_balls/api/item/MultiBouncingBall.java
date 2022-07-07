@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class MultiBouncingBall extends BouncingBall {
 
@@ -42,11 +43,16 @@ public class MultiBouncingBall extends BouncingBall {
 	@Override
 	public void bounce(Entity entity, float motionY) {
 		super.bounce(entity, motionY);
-		PlayerEntity player = (PlayerEntity) entity;
-
 		if (consumptionItem.getItem() != Items.AIR) {
-			int slot = player.inventory.findSlotMatchingItem(consumptionItem);
-			player.inventory.removeItem(slot, 1);
+			entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(itemHandler -> {
+				for (int i = 0; i < itemHandler.getSlots(); ++i) {
+					ItemStack stack = itemHandler.getStackInSlot(i);
+					if (!stack.isEmpty() && stack.getItem() == consumptionItem.getItem() && ItemStack.tagMatches(stack, consumptionItem)) {
+						itemHandler.extractItem(i, 1, false);
+						break;
+					}
+				}
+			});
 		}
 	}
 
