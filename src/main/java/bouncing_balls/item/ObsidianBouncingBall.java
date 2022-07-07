@@ -3,7 +3,6 @@ package bouncing_balls.item;
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.api.item.BouncingBall;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.potion.EffectInstance;
@@ -16,10 +15,8 @@ public class ObsidianBouncingBall extends BouncingBall {
 	}
 	
 	@Override
-	public void bounce(Entity entity, float motionY) {
+	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		if (entity instanceof LivingEntity) {
-			((LivingEntity) entity).addEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
-		}
+		entity.addEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 600));
 	}
 }

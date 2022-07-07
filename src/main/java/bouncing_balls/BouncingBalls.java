@@ -26,7 +26,7 @@ public class BouncingBalls {
 		}
 	};
 	
-	public BouncingBalls() {		
+	public BouncingBalls() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
 		BouncingBallsItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());

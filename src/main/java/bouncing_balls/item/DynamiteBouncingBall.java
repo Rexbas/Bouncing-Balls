@@ -7,6 +7,7 @@ import bouncing_balls.api.item.BouncingBall;
 import bouncing_balls.api.item.MultiBouncingBall;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -25,14 +26,14 @@ public class DynamiteBouncingBall extends MultiBouncingBall {
 	}
 	
 	@Override
-	public void bounce(Entity entity, float motionY) {
+	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
 		entity.level.explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Explosion.Mode.BREAK);
 	}
 	
 	@Override
-	public void playBounceSound(World world, Entity player) {
-		player.playSound(SoundEvents.GENERIC_EXPLODE, 1f, 1f);
+	public void playBounceSound(World world, Entity entity) {
+		entity.playSound(SoundEvents.GENERIC_EXPLODE, 1f, 1f);
 	}
 	
 	@Override

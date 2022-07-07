@@ -1,10 +1,10 @@
 package bouncing_balls.api.item;
 
-import bouncing_balls.api.capability.BounceCapability;
 import bouncing_balls.api.capability.BounceCapabilityProvider;
 import bouncing_balls.api.capability.IBounceCapability;
 import bouncing_balls.init.BouncingBallsSounds;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,8 +30,6 @@ public class BouncingBall extends Item implements IBouncingBall {
     	ItemStack stack = player.getItemInHand(hand);
 
     	// TODO ALWAYS PREFER OFF HAND AND ONLY ALLOW 1 BALL TO BE ACTIVE AND NO SWITCHING
-    	// TODO pick the main hand first or consuming ball in off hand if already in air (check canBounce)
-    	// Always prioritize the main hand. If the main hand contains a ball, don't bounce with the off hand ball
     	if (hand == Hand.OFF_HAND && player.getMainHandItem().getItem() instanceof IBouncingBall) {
     		return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
     	}
@@ -51,13 +49,16 @@ public class BouncingBall extends Item implements IBouncingBall {
 	}
 	
 	@Override
-	public boolean canBounce(Entity entity) {
-		IBounceCapability cap = entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).orElse(new BounceCapability());
-		return cap.getConsecutiveBounces() < 1 && entity.isOnGround() && !entity.isInWater() && !entity.isInLava();
+	public boolean canBounce(LivingEntity entity) {
+		IBounceCapability cap = entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).orElse(null);
+		if (cap != null) {
+			return cap.getConsecutiveBounces() < 1 && entity.isOnGround() && !entity.isInWater() && !entity.isInLava();
+		}
+		return false;
 	}
 	
 	@Override
-	public void bounce(Entity entity, float motionY) {
+	public void bounce(LivingEntity entity, float motionY) {
 		float yaw = entity.yRot;
 		float pitch = entity.xRot;
 		double motionX = (double)(-MathHelper.sin(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * properties.forwardMotion);
@@ -71,24 +72,23 @@ public class BouncingBall extends Item implements IBouncingBall {
 	}
 	
 	@Override
-	public void damageBall(PlayerEntity player, ItemStack stack) {
-		stack.hurtAndBreak(1, player, (p) -> {});
-	}
-	
-	@Override
-	public float onFall(PlayerEntity player, ItemStack stack, float fallDistance) {
+	public float onFall(LivingEntity entity, ItemStack stack, float fallDistance) {
 		if (fallDistance > properties.rebounceHeight) {
-			bounce(player, properties.upwardMotion);
-			damageBall(player, stack);
-			playBounceSound(player.level, player);
+			bounce(entity, properties.upwardMotion);
+			damageBall(entity, stack);
+			playBounceSound(entity.level, entity);
 			return properties.damageMultiplier;
 		}
 		return 0f;
 	}
 	
-	public void playBounceSound(World world, Entity player) {
+	public void damageBall(LivingEntity entity, ItemStack stack) {
+		stack.hurtAndBreak(1, entity, (p) -> {});
+	}
+	
+	public void playBounceSound(World world, Entity entity) {
 		float pitch = world.random.nextFloat() * (1.1f - 0.9f) + 0.9f;
-		player.playSound(getBounceSound(), 1, pitch);
+		entity.playSound(getBounceSound(), 1, pitch);
 	}
 	
 	public SoundEvent getBounceSound() {

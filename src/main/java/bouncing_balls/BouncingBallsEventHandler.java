@@ -18,7 +18,7 @@ public class BouncingBallsEventHandler {
 	
 	@SubscribeEvent
 	public static void attachtCapability(AttachCapabilitiesEvent<Entity> event) {	
-		if(event.getObject() instanceof PlayerEntity) {
+		if (event.getObject() instanceof PlayerEntity) {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.bounce"), new BounceCapabilityProvider());
 		}
 	}
@@ -32,7 +32,14 @@ public class BouncingBallsEventHandler {
 			else if (event.phase == TickEvent.Phase.END) {
 				if (cap.getConsecutiveBounces() > 0 && event.player.isOnGround() && cap.getStartTickOnGround()) {
 					cap.resetConsecutiveBounces();
-					// TODO onFall()...?
+					
+					if (event.player.getMainHandItem().getItem() instanceof IBouncingBall) {
+						((IBouncingBall) event.player.getMainHandItem().getItem()).onFall(event.player, event.player.getMainHandItem(), 0);
+					}
+					else if (event.player.getOffhandItem().getItem() instanceof IBouncingBall) {
+						((IBouncingBall) event.player.getOffhandItem().getItem()).onFall(event.player, event.player.getOffhandItem(), 0);
+					}
+					event.player.hurtMarked = true;
 				}
 			}
 		});
@@ -45,7 +52,7 @@ public class BouncingBallsEventHandler {
 			player.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).ifPresent(cap -> {
 				cap.resetConsecutiveBounces();
 			});
-			// TODO Rebounce does not work and is not needed for creative mode
+			
 			if (player.getMainHandItem().getItem() instanceof IBouncingBall) {
 				((IBouncingBall) player.getMainHandItem().getItem()).onFall(player, player.getMainHandItem(), event.getDistance());
 			}

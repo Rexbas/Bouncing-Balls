@@ -26,16 +26,16 @@ public class SnowBouncingBall extends MultiBouncingBall {
 	}
 	
 	@Override
-	public void bounce(Entity entity, float motionY) {
+	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		SnowballEntity snow = new SnowballEntity(entity.level, (LivingEntity) entity);
+		SnowballEntity snow = new SnowballEntity(entity.level, entity);
 		snow.push(0, -1, 0);
 		entity.level.addFreshEntity(snow);
 	}
 	
 	@Override
-	public void playBounceSound(World world, Entity player) {
-		player.playSound(SoundEvents.SNOWBALL_THROW, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
+	public void playBounceSound(World world, Entity entity) {
+		entity.playSound(SoundEvents.SNOWBALL_THROW, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
 	}
 	
 	@Override
