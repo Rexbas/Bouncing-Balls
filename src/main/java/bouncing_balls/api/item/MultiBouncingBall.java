@@ -34,8 +34,6 @@ public class MultiBouncingBall extends BouncingBall {
 
 	/**
 	 * Add y-motion to the entity and reduce the consumption item if applicable.
-	 * IMPORTANT: If the consumption item is not Items.AIR, check if the inventory
-	 * contains the consumption item before calling this function.
 	 * 
 	 * @param entity  The entity to bounce.
 	 * @param motionY The y-motion to add.

@@ -2,11 +2,8 @@ package bouncing_balls;
 
 import bouncing_balls.api.capability.BounceCapability;
 import bouncing_balls.api.capability.IBounceCapability;
-import bouncing_balls.common.capabilities.IJumpCapability;
-import bouncing_balls.common.capabilities.JumpCapability;
 import bouncing_balls.init.BouncingBallsItems;
 import bouncing_balls.init.BouncingBallsSounds;
-import bouncing_balls.network.BouncingBallsPacketHandler;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.INBT;
@@ -36,20 +33,7 @@ public class BouncingBalls {
 		BouncingBallsSounds.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
 	
-    public void setup(final FMLCommonSetupEvent event) {
-    	BouncingBallsPacketHandler.register();
-    	CapabilityManager.INSTANCE.register(IJumpCapability.class, new IStorage<IJumpCapability>() {
-
-			@Override
-			public INBT writeNBT(Capability<IJumpCapability> capability, IJumpCapability instance, Direction side) {
-				return null;
-			}
-
-			@Override
-			public void readNBT(Capability<IJumpCapability> capability, IJumpCapability instance, Direction side, INBT nbt) {}
-			
-		}, JumpCapability::new);
-    	
+    public void setup(final FMLCommonSetupEvent event) {    	
     	CapabilityManager.INSTANCE.register(IBounceCapability.class, new IStorage<IBounceCapability>() {
 
 			@Override
