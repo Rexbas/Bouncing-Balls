@@ -13,3 +13,9 @@ authors="Rexbas"
 description='''
 Hop around the world with Bouncing Balls!
 '''
+[[dependencies.bouncingballs]]
+    modId="bouncingballs_api"
+    mandatory=true
+    versionRange="[7,)"
+    ordering="AFTER"
+    side="BOTH"
