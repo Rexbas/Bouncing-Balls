@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
-import com.rexbas.bouncingballs.api.item.MultiBouncingBall;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -20,10 +19,10 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-public class DynamiteBouncingBall extends MultiBouncingBall {
+public class DynamiteBouncingBall extends BouncingBall {
 
 	public DynamiteBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f), 3, Items.GUNPOWDER);
+		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER));
 	}
 	
 	@Override
