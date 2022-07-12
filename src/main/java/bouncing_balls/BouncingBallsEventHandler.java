@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,16 +28,16 @@ public class BouncingBallsEventHandler {
 	}
 	
 	@SubscribeEvent
-	public static void attachtCapability (AttachCapabilitiesEvent<Entity> event) {	
+	public static void attachtCapability(AttachCapabilitiesEvent<Entity> event) {
 		if(event.getObject() instanceof Player) {
 			event.addCapability(new ResourceLocation(BouncingBalls.MODID, "capability.jump"), new JumpProvider());
 		}
 	}
 	
 	@SubscribeEvent
-	public static void onLivingUpdate(LivingUpdateEvent event) {
-		if(event.getEntityLiving() instanceof Player) {			
-			Player player = (Player) event.getEntityLiving();
+	public static void onLivingUpdate(LivingTickEvent event) {
+		if(event.getEntity() instanceof Player) {
+			Player player = (Player) event.getEntity();
 			
 			LazyOptional<IJumpCapability> cap = player.getCapability(JumpProvider.JUMP_CAPABILITY, player.getDirection());
 			cap.ifPresent(c -> {
@@ -101,14 +101,13 @@ public class BouncingBallsEventHandler {
 					c.setFallDistance(0);
 				}
 			});
-		}	
+		}
 	}		
-	
 	
 	@SubscribeEvent
 	public static void onPlayerFall(LivingFallEvent event) {
-		if(event.getEntityLiving() instanceof Player) {
-			Player player = (Player) event.getEntityLiving();
+		if(event.getEntity() instanceof Player) {
+			Player player = (Player) event.getEntity();
 			if(player.getMainHandItem() != null) {
 				if(player.getMainHandItem().getItem() instanceof BouncingBall) {
 					event.setCanceled(true);

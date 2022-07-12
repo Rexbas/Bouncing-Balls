@@ -1,4 +1,4 @@
-package bouncing_balls.data;
+package bouncing_balls.datagen;
 
 import bouncing_balls.BouncingBalls;
 import bouncing_balls.init.BouncingBallsItems;
