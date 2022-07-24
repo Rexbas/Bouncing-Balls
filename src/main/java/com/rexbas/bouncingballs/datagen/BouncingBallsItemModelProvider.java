@@ -1,7 +1,7 @@
 package com.rexbas.bouncingballs.datagen;
 
 import com.rexbas.bouncingballs.BouncingBalls;
-import com.rexbas.bouncingballs.BouncingBallsAPI;
+import com.rexbas.bouncingballs.api.BouncingBallsAPI;
 import com.rexbas.bouncingballs.init.BouncingBallsItems;
 
 import net.minecraft.data.DataGenerator;
@@ -22,7 +22,14 @@ public class BouncingBallsItemModelProvider extends ItemModelProvider {
 	protected void registerModels() {
 		BouncingBallsItems.ITEMS.getEntries().forEach((ball) -> {
 			String name = ball.getId().getPath();
-			this.getBuilder(name).parent(bouncingball).texture("layer0", "item/" + name);
+			this.getBuilder(name).parent(bouncingball)
+			.texture("north", "item/" + name)
+			.texture("east", "item/" + name)
+			.texture("south", "item/" + name)
+			.texture("west", "item/" + name)
+			.texture("up", "item/" + name)
+			.texture("down", "item/" + name)
+			.texture("handle", "item/" + name + "_handle");
 		});
 	}
 }

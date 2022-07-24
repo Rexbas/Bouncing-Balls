@@ -1,6 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "layer0": "bouncingballs:item/blue"
+    "north": "bouncingballs:item/blue",
+    "east": "bouncingballs:item/blue",
+    "south": "bouncingballs:item/blue",
+    "west": "bouncingballs:item/blue",
+    "up": "bouncingballs:item/blue",
+    "down": "bouncingballs:item/blue",
+    "handle": "bouncingballs:item/blue_handle"
   }
 }
