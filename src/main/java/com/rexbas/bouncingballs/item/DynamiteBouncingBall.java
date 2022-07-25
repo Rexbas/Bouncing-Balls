@@ -6,11 +6,11 @@ import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 public class DynamiteBouncingBall extends BouncingBall {
 
 	public DynamiteBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER));
+		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER).addFluid(FluidTags.WATER));
 	}
 	
 	@Override
@@ -32,7 +32,7 @@ public class DynamiteBouncingBall extends BouncingBall {
 	}
 	
 	@Override
-	public void playBounceSound(World world, Entity entity) {
+	public void playBounceSound(World world, LivingEntity entity) {
 		entity.playSound(SoundEvents.GENERIC_EXPLODE, 1f, 1f);
 	}
 	

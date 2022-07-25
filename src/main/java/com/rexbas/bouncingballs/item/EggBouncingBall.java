@@ -6,12 +6,12 @@ import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.EggEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 public class EggBouncingBall extends BouncingBall {
 
 	public EggBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.5f, 0.65f, 12f, 0.3f, false, 3, Items.EGG));
+		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.5f, 0.65f, 12f, 0.3f, false, 3, Items.EGG).addFluid(FluidTags.WATER));
 	}
 	
 	@Override
@@ -34,7 +34,7 @@ public class EggBouncingBall extends BouncingBall {
 	}
 	
 	@Override
-	public void playBounceSound(World world, Entity entity) {
+	public void playBounceSound(World world, LivingEntity entity) {
 		entity.playSound(SoundEvents.EGG_THROW, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
 	}
 	

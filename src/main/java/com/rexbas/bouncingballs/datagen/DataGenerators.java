@@ -17,5 +17,6 @@ public class DataGenerators {
 		ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
         gen.addProvider(new BouncingBallsItemModelProvider(gen, fileHelper));
+        gen.addProvider(new BouncingBallsRecipeProvider(gen));
 	}
 }
