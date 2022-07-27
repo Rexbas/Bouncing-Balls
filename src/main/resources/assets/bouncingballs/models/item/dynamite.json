@@ -1,0 +1,12 @@
+{
+  "parent": "bouncingballs_api:item/bouncingball",
+  "textures": {
+    "north": "bouncingballs:item/dynamite",
+    "east": "bouncingballs:item/dynamite_side",
+    "south": "bouncingballs:item/dynamite",
+    "west": "bouncingballs:item/dynamite_side",
+    "up": "bouncingballs:item/dynamite_top",
+    "down": "bouncingballs:item/dynamite_top",
+    "handle": "bouncingballs:item/dynamite_handle"
+  }
+}

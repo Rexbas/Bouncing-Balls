@@ -22,7 +22,9 @@ import net.minecraft.world.World;
 public class DynamiteBouncingBall extends BouncingBall {
 
 	public DynamiteBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER).addFluid(FluidTags.WATER));
+		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER)
+				.recipeItem(Items.GUNPOWDER)
+				.addFluid(FluidTags.WATER));
 	}
 	
 	@Override
@@ -38,7 +40,7 @@ public class DynamiteBouncingBall extends BouncingBall {
 	
 	@Override
 	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
-		list.add(new TranslationTextComponent("bouncing_balls.dynamite.tooltip").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAAAAAA))));
-		list.add(new TranslationTextComponent("bouncing_balls.dynamite.warning").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAA0000))));
+		super.appendHoverText(stack, world, list, flag);
+		list.add(new TranslationTextComponent("bouncingballs.hovertext.dynamite.warning").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAA0000))));
     }
 }

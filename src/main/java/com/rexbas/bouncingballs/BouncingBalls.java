@@ -11,7 +11,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class BouncingBalls {
 	public static final String MODID = "bouncingballs";
 	
-	public static final ItemGroup ITEMGROUP = new ItemGroup(MODID) {
+	public static final ItemGroup TAB = new ItemGroup(MODID) {
 		@Override
 		public ItemStack makeIcon() {
 			return new ItemStack(BouncingBallsItems.RED.get());

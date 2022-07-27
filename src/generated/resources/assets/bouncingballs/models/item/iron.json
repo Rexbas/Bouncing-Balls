@@ -1,6 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "layer0": "bouncingballs:item/iron"
+    "north": "bouncingballs:item/iron",
+    "east": "bouncingballs:item/iron",
+    "south": "bouncingballs:item/iron",
+    "west": "bouncingballs:item/iron",
+    "up": "bouncingballs:item/iron",
+    "down": "bouncingballs:item/iron",
+    "handle": "bouncingballs:item/iron_handle"
   }
 }

@@ -2,6 +2,7 @@ package com.rexbas.bouncingballs.datagen;
 
 import java.util.function.Consumer;
 
+import com.rexbas.bouncingballs.api.item.BouncingBall;
 import com.rexbas.bouncingballs.init.BouncingBallsItems;
 
 import net.minecraft.block.Blocks;
@@ -19,16 +20,14 @@ public class BouncingBallsRecipeProvider extends RecipeProvider {
 	
 	@Override
 	protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-	      ShapedRecipeBuilder.shaped(BouncingBallsItems.WHITE.get())
-	      .define('S', Blocks.SLIME_BLOCK).define('D', Items.WHITE_DYE)
-	      .pattern("DDD")
-	      .pattern("DSD")
-	      .pattern("DDD").unlockedBy("has_slime_ball", has(Items.SLIME_BALL)).save(consumer);
-	      
-	      ShapedRecipeBuilder.shaped(BouncingBallsItems.RED.get())
-	      .define('S', Blocks.SLIME_BLOCK).define('D', Items.RED_DYE)
-	      .pattern("DDD")
-	      .pattern("DSD")
-	      .pattern("DDD").unlockedBy("has_slime_ball", has(Items.SLIME_BALL)).save(consumer);
+		BouncingBallsItems.ITEMS.getEntries().forEach((ball) -> {			
+			if (ball.get() instanceof BouncingBall && ((BouncingBall) ball.get()).getRecipeItem() != Items.AIR) {
+				ShapedRecipeBuilder.shaped(ball.get())
+				.define('S', Blocks.SLIME_BLOCK).define('D', ((BouncingBall) ball.get()).getRecipeItem())
+				.pattern("DDD")
+				.pattern("DSD")
+				.pattern("DDD").group("Bouncing Balls").unlockedBy("has_slime_block", has(Blocks.SLIME_BLOCK)).save(consumer);
+			}
+		});
 	}
 }

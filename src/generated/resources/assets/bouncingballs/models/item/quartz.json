@@ -1,6 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "layer0": "bouncingballs:item/quartz"
+    "north": "bouncingballs:item/quartz",
+    "east": "bouncingballs:item/quartz",
+    "south": "bouncingballs:item/quartz",
+    "west": "bouncingballs:item/quartz",
+    "up": "bouncingballs:item/quartz",
+    "down": "bouncingballs:item/quartz",
+    "handle": "bouncingballs:item/quartz_handle"
   }
 }

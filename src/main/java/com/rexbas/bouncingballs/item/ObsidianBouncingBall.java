@@ -9,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.DamageSource;
@@ -17,7 +18,9 @@ import net.minecraftforge.common.ForgeMod;
 public class ObsidianBouncingBall extends BouncingBall {
 
 	public ObsidianBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(500, Item.BY_BLOCK.get(Blocks.OBSIDIAN), 1f, 0.75f, 10f, 0.4f).addFluid(FluidTags.WATER).addFluid(FluidTags.LAVA));
+		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(500, Item.BY_BLOCK.get(Blocks.OBSIDIAN), 1f, 0.75f, 10f, 0.4f)
+				.recipeItem(Items.OBSIDIAN)
+				.addFluid(FluidTags.LAVA));
 	}
 	
 	@Override

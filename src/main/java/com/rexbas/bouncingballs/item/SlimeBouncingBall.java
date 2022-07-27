@@ -12,7 +12,9 @@ import net.minecraft.util.SoundEvents;
 public class SlimeBouncingBall extends BouncingBall {
 
 	public SlimeBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.ITEMGROUP), new BouncingBall.Properties(150, Items.SLIME_BALL, 0.5f, 1.0f, 10f, 0.3f).addFluid(FluidTags.WATER));
+		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(150, Items.SLIME_BALL, 0.5f, 1.0f, 10f, 0.3f)
+				.recipeItem(Items.SLIME_BALL)
+				.addFluid(FluidTags.WATER));
 	}
 	
 	@Override
