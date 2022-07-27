@@ -16,6 +16,6 @@ Hop around the world with Bouncing Balls!
 [[dependencies.bouncingballs]]
     modId="bouncingballs_api"
     mandatory=true
-    versionRange="[7,)"
+    versionRange="[1.0,)"
     ordering="AFTER"
     side="BOTH"
