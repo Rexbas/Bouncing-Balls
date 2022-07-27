@@ -1,0 +1,12 @@
+{
+  "parent": "bouncingballs_api:item/bouncingball",
+  "textures": {
+    "north": "bouncingballs:item/netherite",
+    "east": "bouncingballs:item/netherite",
+    "south": "bouncingballs:item/netherite",
+    "west": "bouncingballs:item/netherite",
+    "up": "bouncingballs:item/netherite",
+    "down": "bouncingballs:item/netherite",
+    "handle": "bouncingballs:item/netherite_handle"
+  }
+}

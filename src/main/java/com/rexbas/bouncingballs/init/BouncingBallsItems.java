@@ -4,10 +4,13 @@ import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 import com.rexbas.bouncingballs.item.DynamiteBouncingBall;
 import com.rexbas.bouncingballs.item.EggBouncingBall;
-import com.rexbas.bouncingballs.item.ObsidianBouncingBall;
+import com.rexbas.bouncingballs.item.EnderBouncingBall;
+import com.rexbas.bouncingballs.item.LavaFloatingBouncingBall;
+import com.rexbas.bouncingballs.item.PrismarineBouncingBall;
 import com.rexbas.bouncingballs.item.SlimeBouncingBall;
 import com.rexbas.bouncingballs.item.SnowBouncingBall;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
@@ -48,8 +51,11 @@ public class BouncingBallsItems {
 	public static final RegistryObject<Item> GOLD = ITEMS.register("gold", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(250, Items.GOLD_INGOT, 0.75f, 0.8f, 10f, 0.3f).recipeItem(Items.GOLD_INGOT)));
 	public static final RegistryObject<Item> IRON = ITEMS.register("iron", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(300, Items.IRON_INGOT, 0.9f, 0.9f, 10f, 0.25f).recipeItem(Items.IRON_INGOT)));
 	public static final RegistryObject<Item> DIAMOND = ITEMS.register("diamond", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(400, Items.DIAMOND, 1.0f, 1.0f, 10f, 0.2f).recipeItem(Items.DIAMOND)));
-	public static final RegistryObject<Item> OBSIDIAN = ITEMS.register("obsidian", () -> new ObsidianBouncingBall());
+	public static final RegistryObject<Item> PRISMARINE = ITEMS.register("prismarine", () -> new PrismarineBouncingBall());
+	public static final RegistryObject<Item> ENDER = ITEMS.register("ender", () -> new EnderBouncingBall());
+	public static final RegistryObject<Item> OBSIDIAN = ITEMS.register("obsidian", () -> new LavaFloatingBouncingBall(new BouncingBall.Properties(500, Item.BY_BLOCK.get(Blocks.OBSIDIAN), 1f, 0.75f, 10f, 0.4f).recipeItem(Items.OBSIDIAN).addFluid(FluidTags.LAVA)));
 	public static final RegistryObject<Item> QUARTZ = ITEMS.register("quartz", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(550, Items.QUARTZ, 1.0f, 0.8f, 10f, 0.2f).recipeItem(Items.QUARTZ)));
 	public static final RegistryObject<Item> EMERALD = ITEMS.register("emerald", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(600, Items.EMERALD, 1.25f, 1.5f, 16f, 0.1f).recipeItem(Items.EMERALD)));
-	public static final RegistryObject<Item> NETHERSTAR = ITEMS.register("netherstar", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(2500, Items.NETHER_STAR, 1.75f, 1.5f, 18f, 0f).recipeItem(Items.NETHER_STAR).addFluid(FluidTags.WATER)));
+	public static final RegistryObject<Item> NETHERITE = ITEMS.register("netherite", () -> new LavaFloatingBouncingBall(new BouncingBall.Properties(1500, Items.NETHERITE_INGOT, 1.75f, 1.5f, 18f, 0.05f).recipeItem(Items.NETHERITE_INGOT).addFluid(FluidTags.WATER).addFluid(FluidTags.LAVA)));
+	public static final RegistryObject<Item> NETHERSTAR = ITEMS.register("netherstar", () -> new BouncingBall(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(2500, Items.NETHER_STAR, 2f, 1.75f, 20f, 0f).recipeItem(Items.NETHER_STAR).addFluid(FluidTags.WATER)));
 }

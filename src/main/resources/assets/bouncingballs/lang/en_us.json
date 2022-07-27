@@ -1,6 +1,7 @@
 {
     "itemGroup.bouncingballs": "Bouncing Balls",
     "bouncingballs.hovertext.dynamite.warning": "WARNING! This ball creates explosions",
+    "bouncingballs.hovertext.prismarine": "Bounces higher in water",
     "item.bouncingballs.white": "White Bouncing Ball",
     "item.bouncingballs.orange": "Orange Bouncing Ball",
 	"item.bouncingballs.magenta": "Magenta Bouncing Ball",
@@ -27,8 +28,11 @@
     "item.bouncingballs.gold": "Golden Bouncing Ball",
     "item.bouncingballs.iron": "Iron Bouncing Ball",
     "item.bouncingballs.diamond": "Diamond Bouncing Ball",
+    "item.bouncingballs.prismarine": "Prismarine Bouncing Ball",
+    "item.bouncingballs.ender": "Ender Bouncing Ball",
     "item.bouncingballs.obsidian": "Obsidian Bouncing Ball",
+    "item.bouncingballs.quartz": "Quartz Bouncing Ball",
     "item.bouncingballs.emerald": "Emerald Bouncing Ball",
-    "item.bouncingballs.netherstar": "Nether Star Bouncing Ball",
-    "item.bouncingballs.quartz": "Quartz Bouncing Ball"
+    "item.bouncingballs.netherite": "Netherite Bouncing Ball",
+    "item.bouncingballs.netherstar": "Nether Star Bouncing Ball"
 }

@@ -1,6 +1,7 @@
 {
     "itemGroup.bouncingballs": "Stuiterende Ballen",
     "bouncingballs.hovertext.dynamite.warning": "WAARSCHUWING Deze bal maakt explosies",
+    "bouncingballs.hovertext.prismarine": "Stuitert hooger in water",
 	"item.bouncingballs.white": "Witte Stuiter Bal",
 	"item.bouncingballs.orange": "Oranje Stuiter Bal",
 	"item.bouncingballs.magenta": "Magenta Stuiter Bal",
@@ -27,8 +28,11 @@
     "item.bouncingballs.gold": "Gouden Stuiter Bal",
     "item.bouncingballs.iron": "Ijzeren Stuiter Bal",
     "item.bouncingballs.diamond": "Diamanten Stuiter Bal",
+    "item.bouncingballs.prismarine": "Prismariene Stuiter Bal",
+    "item.bouncingballs.ender": "Ender Stuiter Bal",
     "item.bouncingballs.obsidian": "Obsidiaan Stuiter Bal",
+    "item.bouncingballs.quartz": "Kwarts Stuiter Bal",
     "item.bouncingballs.emerald": "Smaragden Stuiter Bal",
-    "item.bouncingballs.netherstar": "Netherster Stuiter Bal",
-    "item.bouncingballs.quartz": "Kwarts Stuiter Bal"
+    "item.bouncingballs.netherite": "Netherieten Stuiter Bal",
+    "item.bouncingballs.netherstar": "Netherster Stuiter Bal"
 }

@@ -5,22 +5,18 @@ import com.rexbas.bouncingballs.api.capability.BounceCapabilityProvider;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ForgeMod;
 
-public class ObsidianBouncingBall extends BouncingBall {
+public class LavaFloatingBouncingBall extends BouncingBall {
 
-	public ObsidianBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(500, Item.BY_BLOCK.get(Blocks.OBSIDIAN), 1f, 0.75f, 10f, 0.4f)
-				.recipeItem(Items.OBSIDIAN)
-				.addFluid(FluidTags.LAVA));
+	public LavaFloatingBouncingBall(BouncingBall.Properties ballProperties) {
+		super(new Item.Properties().tab(BouncingBalls.TAB), ballProperties);
 	}
 	
 	@Override
@@ -34,9 +30,16 @@ public class ObsidianBouncingBall extends BouncingBall {
 	
 	@Override
 	public boolean onDamage(LivingEntity entity, DamageSource damageSource, float amount) {
-		if (entity.isInLava() && damageSource == DamageSource.LAVA || damageSource == DamageSource.ON_FIRE) {
+		if (entity.isInLava() && (damageSource == DamageSource.LAVA || damageSource == DamageSource.ON_FIRE)) {
 			entity.clearFire();
 			return true;
+		}
+		IBounceCapability cap = entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).orElse(null);
+		if (cap != null && (damageSource == DamageSource.IN_FIRE || damageSource == DamageSource.ON_FIRE || damageSource == DamageSource.HOT_FLOOR)) {
+			if (this.shouldSitOnBall(entity)) {
+				entity.clearFire();
+				return true;
+			}
 		}
 		return false;
 	}
