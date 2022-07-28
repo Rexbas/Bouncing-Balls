@@ -1,7 +1,7 @@
 package com.rexbas.bouncingballs.item;
 
 import com.rexbas.bouncingballs.BouncingBalls;
-import com.rexbas.bouncingballs.api.capability.BounceCapabilityProvider;
+import com.rexbas.bouncingballs.api.capability.BounceCapability;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 import com.rexbas.bouncingballs.api.item.IBouncingBall;
@@ -15,6 +15,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -37,7 +38,7 @@ public class EnderBouncingBall extends BouncingBall {
     		return new ActionResult<ItemStack>(ActionResultType.FAIL, stack);
     	}
     	
-    	if (canBounce(player)) {
+    	if (!player.level.isClientSide() && canBounce(player)) {
     		bounce(player, 0);
     		damageBall(player, stack);
 			playBounceSound(world, player);
@@ -48,7 +49,7 @@ public class EnderBouncingBall extends BouncingBall {
 	
 	@Override
 	public boolean canBounce(LivingEntity entity) {
-		IBounceCapability cap = entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).orElse(null);
+		IBounceCapability cap = entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).orElse(null);
 		if (cap != null) {
 			float yaw = entity.yRot;
 			float pitch = entity.xRot;
@@ -70,9 +71,9 @@ public class EnderBouncingBall extends BouncingBall {
 			double deltaZ = (double)(MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * forwardMotion);
 			
 			BlockPos newPos = entity.blockPosition().offset(new Vector3i(deltaX, 8, deltaZ));
-			entity.moveTo(newPos, yaw, pitch);
+			entity.moveTo(newPos.getX(), newPos.getY(), newPos.getZ());
 				
-			entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).ifPresent(cap -> {
+			entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).ifPresent(cap -> {
 				cap.addBounce();
 			});
 		}
@@ -83,6 +84,6 @@ public class EnderBouncingBall extends BouncingBall {
 	
 	@Override
 	public void playBounceSound(World world, LivingEntity entity) {
-		entity.playSound(SoundEvents.ENDER_PEARL_THROW, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
+		world.playSound(null, entity, SoundEvents.ENDER_PEARL_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
 	}
 }

@@ -2,6 +2,7 @@
     "itemGroup.bouncingballs": "Bouncing Balls",
     "bouncingballs.hovertext.dynamite.warning": "WARNING! This ball creates explosions",
     "bouncingballs.hovertext.prismarine": "Bounces higher in water",
+    "bouncingballs.hovertext.fireresistant": "Fire resistant while bouncing",
     "item.bouncingballs.white": "White Bouncing Ball",
     "item.bouncingballs.orange": "Orange Bouncing Ball",
 	"item.bouncingballs.magenta": "Magenta Bouncing Ball",

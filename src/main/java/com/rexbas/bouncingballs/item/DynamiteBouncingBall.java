@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
@@ -35,7 +36,7 @@ public class DynamiteBouncingBall extends BouncingBall {
 	
 	@Override
 	public void playBounceSound(World world, LivingEntity entity) {
-		entity.playSound(SoundEvents.GENERIC_EXPLODE, 1f, 1f);
+		world.playSound(null, entity, SoundEvents.GENERIC_EXPLODE, SoundCategory.PLAYERS, 1, 1);
 	}
 	
 	@Override

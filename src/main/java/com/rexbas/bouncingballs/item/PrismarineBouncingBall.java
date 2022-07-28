@@ -3,7 +3,7 @@ package com.rexbas.bouncingballs.item;
 import java.util.List;
 
 import com.rexbas.bouncingballs.BouncingBalls;
-import com.rexbas.bouncingballs.api.capability.BounceCapabilityProvider;
+import com.rexbas.bouncingballs.api.capability.BounceCapability;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
@@ -35,7 +35,7 @@ public class PrismarineBouncingBall extends BouncingBall {
 		double motionX = 0;
 		double motionZ = 0;
 		
-		IBounceCapability cap = entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).orElse(null);
+		IBounceCapability cap = entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).orElse(null);
 		if (cap != null) {
 			if (cap.getTicksInFluid() > 0 && cap.getLastFluid() == FluidTags.WATER) {
 				motionX = (double)(-MathHelper.sin(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * properties.forwardMotion * 3);
@@ -48,8 +48,9 @@ public class PrismarineBouncingBall extends BouncingBall {
 		}
 		
 		entity.push(motionX, motionY, motionZ);
+		entity.hurtMarked = true;
 		
-		entity.getCapability(BounceCapabilityProvider.BOUNCE_CAPABILITY).ifPresent(capability -> {
+		entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).ifPresent(capability -> {
 			capability.addBounce();
 		});
 	}

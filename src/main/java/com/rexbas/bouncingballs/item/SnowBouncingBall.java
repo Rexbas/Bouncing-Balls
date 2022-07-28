@@ -8,6 +8,7 @@ import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
@@ -29,6 +30,6 @@ public class SnowBouncingBall extends BouncingBall {
 	
 	@Override
 	public void playBounceSound(World world, LivingEntity entity) {
-		entity.playSound(SoundEvents.SNOWBALL_THROW, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
+		world.playSound(null, entity, SoundEvents.SNOWBALL_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f));
 	}
 }
