@@ -1,12 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "north": "bouncingballs:item/netherstar",
-    "east": "bouncingballs:item/netherstar",
-    "south": "bouncingballs:item/netherstar",
-    "west": "bouncingballs:item/netherstar",
-    "up": "bouncingballs:item/netherstar",
     "down": "bouncingballs:item/netherstar",
-    "handle": "bouncingballs:item/netherstar_handle"
+    "east": "bouncingballs:item/netherstar",
+    "handle": "bouncingballs:item/netherstar_handle",
+    "north": "bouncingballs:item/netherstar",
+    "south": "bouncingballs:item/netherstar",
+    "up": "bouncingballs:item/netherstar",
+    "west": "bouncingballs:item/netherstar"
   }
 }

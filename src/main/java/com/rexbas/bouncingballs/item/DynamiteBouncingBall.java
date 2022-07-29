@@ -8,7 +8,6 @@ import com.rexbas.bouncingballs.api.item.BouncingBall;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
@@ -42,6 +41,6 @@ public class DynamiteBouncingBall extends BouncingBall {
 	@Override
 	public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		list.add(new TranslatableComponent("bouncingballs.hovertext.dynamite.warning").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAA0000))));
+		list.add(Component.translatable("bouncingballs.hovertext.dynamite.warning").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAA0000))));
     }
 }

@@ -10,7 +10,6 @@ import com.rexbas.bouncingballs.api.item.BouncingBall;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,6 +54,6 @@ public class FireResistantBouncingBall extends BouncingBall {
 	@Override
 	public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		list.add(new TranslatableComponent("bouncingballs.hovertext.fireresistant").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xFF9900))));
+		list.add(Component.translatable("bouncingballs.hovertext.fireresistant").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xFF9900))));
     }
 }

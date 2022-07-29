@@ -1,12 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "north": "bouncingballs:item/gray",
-    "east": "bouncingballs:item/gray",
-    "south": "bouncingballs:item/gray",
-    "west": "bouncingballs:item/gray",
-    "up": "bouncingballs:item/gray",
     "down": "bouncingballs:item/gray",
-    "handle": "bouncingballs:item/gray_handle"
+    "east": "bouncingballs:item/gray",
+    "handle": "bouncingballs:item/gray_handle",
+    "north": "bouncingballs:item/gray",
+    "south": "bouncingballs:item/gray",
+    "up": "bouncingballs:item/gray",
+    "west": "bouncingballs:item/gray"
   }
 }

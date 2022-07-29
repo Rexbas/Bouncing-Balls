@@ -1,12 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "north": "bouncingballs:item/copper",
-    "east": "bouncingballs:item/copper",
-    "south": "bouncingballs:item/copper",
-    "west": "bouncingballs:item/copper",
-    "up": "bouncingballs:item/copper",
     "down": "bouncingballs:item/copper",
-    "handle": "bouncingballs:item/copper_handle"
+    "east": "bouncingballs:item/copper",
+    "handle": "bouncingballs:item/copper_handle",
+    "north": "bouncingballs:item/copper",
+    "south": "bouncingballs:item/copper",
+    "up": "bouncingballs:item/copper",
+    "west": "bouncingballs:item/copper"
   }
 }

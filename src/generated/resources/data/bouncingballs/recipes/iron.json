@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "Bouncing Balls",
+  "key": {
+    "D": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:slime_block"
+    }
+  },
   "pattern": [
     "DDD",
     "DSD",
     "DDD"
   ],
-  "key": {
-    "S": {
-      "item": "minecraft:slime_block"
-    },
-    "D": {
-      "item": "minecraft:iron_ingot"
-    }
-  },
   "result": {
     "item": "bouncingballs:iron"
   }

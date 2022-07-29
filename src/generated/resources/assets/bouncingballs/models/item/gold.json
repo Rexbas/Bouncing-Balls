@@ -1,12 +1,12 @@
 {
   "parent": "bouncingballs_api:item/bouncingball",
   "textures": {
-    "north": "bouncingballs:item/gold",
-    "east": "bouncingballs:item/gold",
-    "south": "bouncingballs:item/gold",
-    "west": "bouncingballs:item/gold",
-    "up": "bouncingballs:item/gold",
     "down": "bouncingballs:item/gold",
-    "handle": "bouncingballs:item/gold_handle"
+    "east": "bouncingballs:item/gold",
+    "handle": "bouncingballs:item/gold_handle",
+    "north": "bouncingballs:item/gold",
+    "south": "bouncingballs:item/gold",
+    "up": "bouncingballs:item/gold",
+    "west": "bouncingballs:item/gold"
   }
 }
