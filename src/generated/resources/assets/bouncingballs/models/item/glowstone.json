@@ -1,0 +1,12 @@
+{
+  "parent": "bouncingballs_api:item/bouncingball",
+  "textures": {
+    "north": "bouncingballs:item/glowstone",
+    "east": "bouncingballs:item/glowstone",
+    "south": "bouncingballs:item/glowstone",
+    "west": "bouncingballs:item/glowstone",
+    "up": "bouncingballs:item/glowstone",
+    "down": "bouncingballs:item/glowstone",
+    "handle": "bouncingballs:item/glowstone_handle"
+  }
+}

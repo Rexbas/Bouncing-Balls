@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bouncingballs:lightgray"
+    ]
+  },
+  "criteria": {
+    "has_slime_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:slime_block"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bouncingballs:lightgray"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_slime_block",
+      "has_the_recipe"
+    ]
+  ]
+}
