@@ -3,11 +3,11 @@ package com.rexbas.bouncingballs.item;
 import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public class SlimeBouncingBall extends BouncingBall {
 

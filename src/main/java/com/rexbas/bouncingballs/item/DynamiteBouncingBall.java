@@ -5,20 +5,20 @@ import java.util.List;
 import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
 
 public class DynamiteBouncingBall extends BouncingBall {
 
@@ -31,17 +31,17 @@ public class DynamiteBouncingBall extends BouncingBall {
 	@Override
 	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		entity.level.explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Explosion.Mode.BREAK);
+		entity.level.explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Explosion.BlockInteraction.BREAK);
 	}
 	
 	@Override
-	public void playBounceSound(World world, LivingEntity entity) {
-		world.playSound(null, entity, SoundEvents.GENERIC_EXPLODE, SoundCategory.PLAYERS, 1, 1);
+	public void playBounceSound(Level level, LivingEntity entity) {
+		level.playSound(null, entity, SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1, 1);
 	}
 	
 	@Override
-	public void appendHoverText(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
-		super.appendHoverText(stack, world, list, flag);
-		list.add(new TranslationTextComponent("bouncingballs.hovertext.dynamite.warning").setStyle(Style.EMPTY.withColor(Color.fromRgb(0xAA0000))));
+	public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, level, list, flag);
+		list.add(new TranslatableComponent("bouncingballs.hovertext.dynamite.warning").setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xAA0000))));
     }
 }

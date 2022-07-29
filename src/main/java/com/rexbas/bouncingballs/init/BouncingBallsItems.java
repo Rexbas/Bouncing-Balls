@@ -10,12 +10,12 @@ import com.rexbas.bouncingballs.item.PrismarineBouncingBall;
 import com.rexbas.bouncingballs.item.SlimeBouncingBall;
 import com.rexbas.bouncingballs.item.SnowBouncingBall;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.tags.FluidTags;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
