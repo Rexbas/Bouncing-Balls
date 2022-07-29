@@ -1,9 +1,0 @@
-{
-    "bounce": {
-    "category": "neutral",
-    "sounds": [ {
-        "name": "bouncing_balls:bounce",
-        "stream": false
-        } ]   
-    }
-}

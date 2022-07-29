@@ -1,0 +1,12 @@
+{
+  "parent": "bouncingballs_api:item/bouncingball",
+  "textures": {
+    "north": "bouncingballs:item/prismarine",
+    "east": "bouncingballs:item/prismarine",
+    "south": "bouncingballs:item/prismarine",
+    "west": "bouncingballs:item/prismarine",
+    "up": "bouncingballs:item/prismarine",
+    "down": "bouncingballs:item/prismarine",
+    "handle": "bouncingballs:item/prismarine_handle"
+  }
+}

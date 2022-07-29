@@ -1,0 +1,12 @@
+{
+  "parent": "bouncingballs_api:item/bouncingball",
+  "textures": {
+    "north": "bouncingballs:item/emerald",
+    "east": "bouncingballs:item/emerald",
+    "south": "bouncingballs:item/emerald",
+    "west": "bouncingballs:item/emerald",
+    "up": "bouncingballs:item/emerald",
+    "down": "bouncingballs:item/emerald",
+    "handle": "bouncingballs:item/emerald_handle"
+  }
+}
