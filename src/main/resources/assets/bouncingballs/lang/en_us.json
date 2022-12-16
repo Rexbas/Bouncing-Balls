@@ -1,5 +1,5 @@
 {
-    "itemGroup.bouncingballs": "Bouncing Balls",
+    "item_group.bouncingballs": "Bouncing Balls",
     "bouncingballs.hovertext.dynamite.warning": "WARNING! This ball creates explosions",
     "bouncingballs.hovertext.prismarine": "Bounces higher in water",
     "bouncingballs.hovertext.fireresistant": "Fire resistant while bouncing",

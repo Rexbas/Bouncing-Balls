@@ -2,7 +2,6 @@ package com.rexbas.bouncingballs.item;
 
 import java.util.List;
 
-import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.capability.BounceCapability;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
@@ -22,7 +21,7 @@ import net.minecraft.world.level.Level;
 public class PrismarineBouncingBall extends BouncingBall {
 
 	public PrismarineBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(500, Items.PRISMARINE_SHARD, 0.5f, 0.65f, 10f, 0.5f)
+		super(new Item.Properties(), new BouncingBall.Properties(500, Items.PRISMARINE_SHARD, 0.5f, 0.65f, 10f, 0.5f)
 				.recipeItem(Items.PRISMARINE_SHARD)
 				.addFluid(FluidTags.WATER));
 	}

@@ -1,6 +1,5 @@
 package com.rexbas.bouncingballs.item;
 
-import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.capability.BounceCapability;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
@@ -25,7 +24,7 @@ import net.minecraft.world.level.Level;
 public class EnderBouncingBall extends BouncingBall {
 
 	public EnderBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(600, Items.ENDER_EYE, 0.5f, 0.65f, 10f, 0.5f)
+		super(new Item.Properties(), new BouncingBall.Properties(600, Items.ENDER_EYE, 0.5f, 0.65f, 10f, 0.5f)
 				.recipeItem(Items.ENDER_EYE)
 				.addFluid(FluidTags.WATER));
 	}

@@ -2,7 +2,6 @@ package com.rexbas.bouncingballs.item;
 
 import java.util.List;
 
-import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
 import net.minecraft.network.chat.Component;
@@ -16,13 +15,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 
 public class DynamiteBouncingBall extends BouncingBall {
 
 	public DynamiteBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER)
+		super(new Item.Properties(), new BouncingBall.Properties(0.7f, 0.7f, 16f, 0.2f, false, 3, Items.GUNPOWDER)
 				.recipeItem(Items.GUNPOWDER)
 				.addFluid(FluidTags.WATER));
 	}
@@ -30,7 +28,7 @@ public class DynamiteBouncingBall extends BouncingBall {
 	@Override
 	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		entity.level.explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Explosion.BlockInteraction.BREAK);
+		entity.level.explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Level.ExplosionInteraction.TNT);
 	}
 	
 	@Override

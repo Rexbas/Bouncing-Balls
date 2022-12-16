@@ -2,7 +2,6 @@ package com.rexbas.bouncingballs.item;
 
 import java.util.List;
 
-import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.capability.BounceCapability;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
@@ -21,7 +20,7 @@ import net.minecraft.world.level.Level;
 public class FireResistantBouncingBall extends BouncingBall {
 
 	public FireResistantBouncingBall(BouncingBall.Properties ballProperties) {
-		super(new Item.Properties().tab(BouncingBalls.TAB), ballProperties);
+		super(new Item.Properties(), ballProperties);
 	}
 	
 	@Override

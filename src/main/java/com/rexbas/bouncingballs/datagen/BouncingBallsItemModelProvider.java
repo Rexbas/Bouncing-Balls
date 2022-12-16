@@ -4,7 +4,7 @@ import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.BouncingBallsAPI;
 import com.rexbas.bouncingballs.init.BouncingBallsItems;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,8 +13,8 @@ public class BouncingBallsItemModelProvider extends ItemModelProvider {
 
 	private ModelFile bouncingball;
 	
-	public BouncingBallsItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-		super(generator, BouncingBalls.MODID, existingFileHelper);
+	public BouncingBallsItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+		super(output, BouncingBalls.MODID, existingFileHelper);
 		bouncingball = this.getBuilder(BouncingBallsAPI.MODID + ":item/bouncingball");
 	}
 

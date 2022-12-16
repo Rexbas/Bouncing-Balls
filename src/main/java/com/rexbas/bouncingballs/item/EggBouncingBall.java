@@ -1,6 +1,5 @@
 package com.rexbas.bouncingballs.item;
 
-import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +14,7 @@ import net.minecraft.world.level.Level;
 public class EggBouncingBall extends BouncingBall {
 
 	public EggBouncingBall() {
-		super(new Item.Properties().tab(BouncingBalls.TAB), new BouncingBall.Properties(0.5f, 0.65f, 12f, 0.3f, false, 3, Items.EGG)
+		super(new Item.Properties(), new BouncingBall.Properties(0.5f, 0.65f, 12f, 0.3f, false, 3, Items.EGG)
 				.recipeItem(Items.EGG)
 				.addFluid(FluidTags.WATER));
 	}
