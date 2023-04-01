@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:lime"
-  }
+  },
+  "show_notification": true
 }

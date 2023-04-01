@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:dynamite"
-  }
+  },
+  "show_notification": true
 }

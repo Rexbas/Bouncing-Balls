@@ -2,14 +2,7 @@ package com.rexbas.bouncingballs.init;
 
 import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
-import com.rexbas.bouncingballs.item.DynamiteBouncingBall;
-import com.rexbas.bouncingballs.item.EggBouncingBall;
-import com.rexbas.bouncingballs.item.EnderBouncingBall;
-import com.rexbas.bouncingballs.item.FireResistantBouncingBall;
-import com.rexbas.bouncingballs.item.PrismarineBouncingBall;
-import com.rexbas.bouncingballs.item.SlimeBouncingBall;
-import com.rexbas.bouncingballs.item.SnowBouncingBall;
-
+import com.rexbas.bouncingballs.item.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
@@ -26,9 +19,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = BouncingBalls.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BouncingBallsItems {
-	
+
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BouncingBalls.MODID);
-	
+
 	public static final RegistryObject<Item> WHITE = ITEMS.register("white", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.WHITE_DYE).addFluid(FluidTags.WATER)));
 	public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.ORANGE_DYE).addFluid(FluidTags.WATER)));
 	public static final RegistryObject<Item> MAGENTA = ITEMS.register("magenta", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.MAGENTA_DYE).addFluid(FluidTags.WATER)));
@@ -64,48 +57,48 @@ public class BouncingBallsItems {
 	public static final RegistryObject<Item> EMERALD = ITEMS.register("emerald", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(600, Items.EMERALD, 1.25f, 1.5f, 16f, 0.1f).recipeItem(Items.EMERALD)));
 	public static final RegistryObject<Item> NETHERITE = ITEMS.register("netherite", () -> new FireResistantBouncingBall(new BouncingBall.Properties(1500, Items.NETHERITE_INGOT, 1.75f, 1.5f, 18f, 0.05f).recipeItem(Items.NETHERITE_INGOT).addFluid(FluidTags.WATER).addFluid(FluidTags.LAVA)));
 	public static final RegistryObject<Item> NETHERSTAR = ITEMS.register("netherstar", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(2500, Items.NETHER_STAR, 2f, 1.75f, 20f, 0f).recipeItem(Items.NETHER_STAR).addFluid(FluidTags.WATER)));
-	
+
 	@SubscribeEvent
 	public static void buildContents(CreativeModeTabEvent.Register event) {
 		event.registerCreativeModeTab(new ResourceLocation(BouncingBalls.MODID, "bouncingballs_tab"),
 				builder -> builder.title(Component.translatable("item_group." + BouncingBalls.MODID))
 						.icon(() -> new ItemStack(RED.get()))
-						.displayItems((enabledFlags, populator, hasPermissions) -> {
-							populator.accept(WHITE.get());
-							populator.accept(ORANGE.get());
-							populator.accept(MAGENTA.get());
-							populator.accept(LIGHTBLUE.get());
-							populator.accept(YELLOW.get());
-							populator.accept(LIME.get());
-							populator.accept(PINK.get());
-							populator.accept(GRAY.get());
-							populator.accept(LIGHTGRAY.get());
-							populator.accept(CYAN.get());
-							populator.accept(PURPLE.get());
-							populator.accept(BLUE.get());
-							populator.accept(BROWN.get());
-							populator.accept(GREEN.get());
-							populator.accept(RED.get());
-							populator.accept(BLACK.get());
+						.displayItems((params, output) -> {
+							output.accept(WHITE.get());
+							output.accept(ORANGE.get());
+							output.accept(MAGENTA.get());
+							output.accept(LIGHTBLUE.get());
+							output.accept(YELLOW.get());
+							output.accept(LIME.get());
+							output.accept(PINK.get());
+							output.accept(GRAY.get());
+							output.accept(LIGHTGRAY.get());
+							output.accept(CYAN.get());
+							output.accept(PURPLE.get());
+							output.accept(BLUE.get());
+							output.accept(BROWN.get());
+							output.accept(GREEN.get());
+							output.accept(RED.get());
+							output.accept(BLACK.get());
 
-							populator.accept(EGG.get());
-							populator.accept(SNOW.get());
-							populator.accept(DYNAMITE.get());
-							populator.accept(SLIME.get());
-							populator.accept(CLAY.get());
-							populator.accept(REDSTONE.get());
-							populator.accept(GLOWSTONE.get());
-							populator.accept(COPPER.get());
-							populator.accept(GOLD.get());
-							populator.accept(IRON.get());
-							populator.accept(DIAMOND.get());
-							populator.accept(PRISMARINE.get());
-							populator.accept(ENDER.get());
-							populator.accept(OBSIDIAN.get());
-							populator.accept(QUARTZ.get());
-							populator.accept(EMERALD.get());
-							populator.accept(NETHERITE.get());
-							populator.accept(NETHERSTAR.get());
+							output.accept(EGG.get());
+							output.accept(SNOW.get());
+							output.accept(DYNAMITE.get());
+							output.accept(SLIME.get());
+							output.accept(CLAY.get());
+							output.accept(REDSTONE.get());
+							output.accept(GLOWSTONE.get());
+							output.accept(COPPER.get());
+							output.accept(GOLD.get());
+							output.accept(IRON.get());
+							output.accept(DIAMOND.get());
+							output.accept(PRISMARINE.get());
+							output.accept(ENDER.get());
+							output.accept(OBSIDIAN.get());
+							output.accept(QUARTZ.get());
+							output.accept(EMERALD.get());
+							output.accept(NETHERITE.get());
+							output.accept(NETHERSTAR.get());
 						}));
 	}
 }

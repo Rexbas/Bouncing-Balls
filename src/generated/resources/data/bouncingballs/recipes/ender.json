@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:ender"
-  }
+  },
+  "show_notification": true
 }

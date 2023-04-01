@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:prismarine"
-  }
+  },
+  "show_notification": true
 }

@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:obsidian"
-  }
+  },
+  "show_notification": true
 }

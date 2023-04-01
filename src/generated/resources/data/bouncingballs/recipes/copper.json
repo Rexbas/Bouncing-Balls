@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:copper"
-  }
+  },
+  "show_notification": true
 }

@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:clay"
-  }
+  },
+  "show_notification": true
 }

@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:emerald"
-  }
+  },
+  "show_notification": true
 }

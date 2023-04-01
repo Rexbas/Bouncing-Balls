@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:cyan"
-  }
+  },
+  "show_notification": true
 }

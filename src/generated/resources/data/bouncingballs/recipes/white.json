@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "bouncingballs:white"
-  }
+  },
+  "show_notification": true
 }
