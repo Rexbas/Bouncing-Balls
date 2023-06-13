@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:prismarine"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

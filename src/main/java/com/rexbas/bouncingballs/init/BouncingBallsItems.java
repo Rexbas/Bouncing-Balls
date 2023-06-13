@@ -3,14 +3,15 @@ package com.rexbas.bouncingballs.init;
 import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 import com.rexbas.bouncingballs.item.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,6 +22,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class BouncingBallsItems {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BouncingBalls.MODID);
+	public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, BouncingBalls.MODID);
 
 	public static final RegistryObject<Item> WHITE = ITEMS.register("white", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.WHITE_DYE).addFluid(FluidTags.WATER)));
 	public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.ORANGE_DYE).addFluid(FluidTags.WATER)));
@@ -58,47 +60,48 @@ public class BouncingBallsItems {
 	public static final RegistryObject<Item> NETHERITE = ITEMS.register("netherite", () -> new FireResistantBouncingBall(new BouncingBall.Properties(1500, Items.NETHERITE_INGOT, 1.75f, 1.5f, 18f, 0.05f).recipeItem(Items.NETHERITE_INGOT).addFluid(FluidTags.WATER).addFluid(FluidTags.LAVA)));
 	public static final RegistryObject<Item> NETHERSTAR = ITEMS.register("netherstar", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(2500, Items.NETHER_STAR, 2f, 1.75f, 20f, 0f).recipeItem(Items.NETHER_STAR).addFluid(FluidTags.WATER)));
 
-	@SubscribeEvent
-	public static void buildContents(CreativeModeTabEvent.Register event) {
-		event.registerCreativeModeTab(new ResourceLocation(BouncingBalls.MODID, "bouncingballs_tab"),
-				builder -> builder.title(Component.translatable("item_group." + BouncingBalls.MODID))
-						.icon(() -> new ItemStack(RED.get()))
-						.displayItems((params, output) -> {
-							output.accept(WHITE.get());
-							output.accept(ORANGE.get());
-							output.accept(MAGENTA.get());
-							output.accept(LIGHTBLUE.get());
-							output.accept(YELLOW.get());
-							output.accept(LIME.get());
-							output.accept(PINK.get());
-							output.accept(GRAY.get());
-							output.accept(LIGHTGRAY.get());
-							output.accept(CYAN.get());
-							output.accept(PURPLE.get());
-							output.accept(BLUE.get());
-							output.accept(BROWN.get());
-							output.accept(GREEN.get());
-							output.accept(RED.get());
-							output.accept(BLACK.get());
 
-							output.accept(EGG.get());
-							output.accept(SNOW.get());
-							output.accept(DYNAMITE.get());
-							output.accept(SLIME.get());
-							output.accept(CLAY.get());
-							output.accept(REDSTONE.get());
-							output.accept(GLOWSTONE.get());
-							output.accept(COPPER.get());
-							output.accept(GOLD.get());
-							output.accept(IRON.get());
-							output.accept(DIAMOND.get());
-							output.accept(PRISMARINE.get());
-							output.accept(ENDER.get());
-							output.accept(OBSIDIAN.get());
-							output.accept(QUARTZ.get());
-							output.accept(EMERALD.get());
-							output.accept(NETHERITE.get());
-							output.accept(NETHERSTAR.get());
-						}));
-	}
+	public static RegistryObject<CreativeModeTab> TAB = CREATIVE_TABS.register("bouncingballs_tab",
+			() -> CreativeModeTab.builder()
+					.title(Component.translatable("item_group." + BouncingBalls.MODID))
+					.icon(() -> new ItemStack(RED.get()))
+					.displayItems((params, output) -> {
+						output.accept(WHITE.get());
+						output.accept(ORANGE.get());
+						output.accept(MAGENTA.get());
+						output.accept(LIGHTBLUE.get());
+						output.accept(YELLOW.get());
+						output.accept(LIME.get());
+						output.accept(PINK.get());
+						output.accept(GRAY.get());
+						output.accept(LIGHTGRAY.get());
+						output.accept(CYAN.get());
+						output.accept(PURPLE.get());
+						output.accept(BLUE.get());
+						output.accept(BROWN.get());
+						output.accept(GREEN.get());
+						output.accept(RED.get());
+						output.accept(BLACK.get());
+
+						output.accept(EGG.get());
+						output.accept(SNOW.get());
+						output.accept(DYNAMITE.get());
+						output.accept(SLIME.get());
+						output.accept(CLAY.get());
+						output.accept(REDSTONE.get());
+						output.accept(GLOWSTONE.get());
+						output.accept(COPPER.get());
+						output.accept(GOLD.get());
+						output.accept(IRON.get());
+						output.accept(DIAMOND.get());
+						output.accept(PRISMARINE.get());
+						output.accept(ENDER.get());
+						output.accept(OBSIDIAN.get());
+						output.accept(QUARTZ.get());
+						output.accept(EMERALD.get());
+						output.accept(NETHERITE.get());
+						output.accept(NETHERSTAR.get());
+					})
+					.build()
+	);
 }

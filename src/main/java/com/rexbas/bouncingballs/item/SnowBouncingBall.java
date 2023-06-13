@@ -1,7 +1,6 @@
 package com.rexbas.bouncingballs.item;
 
 import com.rexbas.bouncingballs.api.item.BouncingBall;
-
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
@@ -22,9 +21,9 @@ public class SnowBouncingBall extends BouncingBall {
 	@Override
 	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		Snowball snow = new Snowball(entity.level, entity);
+		Snowball snow = new Snowball(entity.level(), entity);
 		snow.push(0, -1, 0);
-		entity.level.addFreshEntity(snow);
+		entity.level().addFreshEntity(snow);
 	}
 	
 	@Override

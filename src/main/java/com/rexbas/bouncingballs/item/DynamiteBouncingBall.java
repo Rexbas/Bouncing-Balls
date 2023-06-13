@@ -28,7 +28,7 @@ public class DynamiteBouncingBall extends BouncingBall {
 	@Override
 	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		entity.level.explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Level.ExplosionInteraction.TNT);
+		entity.level().explode(entity, entity.getX(), entity.getY(), entity.getZ(), 0.75F, false, Level.ExplosionInteraction.TNT);
 	}
 	
 	@Override

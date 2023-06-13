@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:netherite"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

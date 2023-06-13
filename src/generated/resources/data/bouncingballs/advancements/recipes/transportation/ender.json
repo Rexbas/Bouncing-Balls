@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:ender"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

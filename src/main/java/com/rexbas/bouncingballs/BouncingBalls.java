@@ -1,7 +1,6 @@
 package com.rexbas.bouncingballs;
 
 import com.rexbas.bouncingballs.init.BouncingBallsItems;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -11,5 +10,6 @@ public class BouncingBalls {
 	
 	public BouncingBalls() {
 		BouncingBallsItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		BouncingBallsItems.CREATIVE_TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
 }

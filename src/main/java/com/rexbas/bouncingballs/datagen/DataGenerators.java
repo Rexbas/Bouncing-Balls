@@ -1,7 +1,6 @@
 package com.rexbas.bouncingballs.datagen;
 
 import com.rexbas.bouncingballs.BouncingBalls;
-
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;

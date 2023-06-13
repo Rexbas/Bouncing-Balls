@@ -1,10 +1,7 @@
 package com.rexbas.bouncingballs.datagen;
 
-import java.util.function.Consumer;
-
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 import com.rexbas.bouncingballs.init.BouncingBallsItems;
-
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -12,6 +9,8 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.function.Consumer;
 
 public class BouncingBallsRecipeProvider extends RecipeProvider {
 

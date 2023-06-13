@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:redstone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

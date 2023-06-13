@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:purple"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

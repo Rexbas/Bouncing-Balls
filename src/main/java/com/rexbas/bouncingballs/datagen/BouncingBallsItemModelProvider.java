@@ -3,7 +3,6 @@ package com.rexbas.bouncingballs.datagen;
 import com.rexbas.bouncingballs.BouncingBalls;
 import com.rexbas.bouncingballs.api.BouncingBallsAPI;
 import com.rexbas.bouncingballs.init.BouncingBallsItems;
-
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;

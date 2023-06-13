@@ -1,7 +1,6 @@
 package com.rexbas.bouncingballs.item;
 
 import com.rexbas.bouncingballs.api.item.BouncingBall;
-
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;

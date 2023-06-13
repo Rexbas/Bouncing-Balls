@@ -22,9 +22,9 @@ public class EggBouncingBall extends BouncingBall {
 	@Override
 	public void bounce(LivingEntity entity, float motionY) {
 		super.bounce(entity, motionY);
-		ThrownEgg egg = new ThrownEgg(entity.level, entity);
+		ThrownEgg egg = new ThrownEgg(entity.level(), entity);
         egg.push(0, -1, 0);
-		entity.level.addFreshEntity(egg);
+		entity.level().addFreshEntity(egg);
 	}
 	
 	@Override

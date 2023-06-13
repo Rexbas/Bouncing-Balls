@@ -1,11 +1,8 @@
 package com.rexbas.bouncingballs.item;
 
-import java.util.List;
-
 import com.rexbas.bouncingballs.api.capability.BounceCapability;
 import com.rexbas.bouncingballs.api.capability.IBounceCapability;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
@@ -17,6 +14,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class PrismarineBouncingBall extends BouncingBall {
 

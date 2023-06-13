@@ -36,7 +36,7 @@ public class EnderBouncingBall extends BouncingBall {
 			return new InteractionResultHolder<ItemStack>(InteractionResult.FAIL, stack);
 		}
 
-		if (!player.level.isClientSide() && canBounce(player)) {
+		if (!player.level().isClientSide() && canBounce(player)) {
 			bounce(player, 0);
 			damageBall(player, stack);
 			playBounceSound(level, player);
@@ -54,7 +54,7 @@ public class EnderBouncingBall extends BouncingBall {
 			double deltaX = (double) (-Mth.sin(yaw / 180.0F * (float) Math.PI) * Mth.cos(pitch / 180.0F * (float) Math.PI) * 5);
 			double deltaZ = (double) (Mth.cos(yaw / 180.0F * (float) Math.PI) * Mth.cos(pitch / 180.0F * (float) Math.PI) * 5);
 			BlockPos newPos = entity.blockPosition().offset(new Vec3i((int) Math.round(deltaX), 8, (int) Math.round(deltaZ)));
-			return super.canBounce(entity) && entity.level.getBlockState(newPos).isAir() && entity.level.getBlockState(newPos.above()).isAir();
+			return super.canBounce(entity) && entity.level().getBlockState(newPos).isAir() && entity.level().getBlockState(newPos.above()).isAir();
 		}
 		return false;
 	}
@@ -69,11 +69,9 @@ public class EnderBouncingBall extends BouncingBall {
 			double deltaZ = (double)(Mth.cos(yaw / 180.0F * (float)Math.PI) * Mth.cos(pitch / 180.0F * (float)Math.PI) * forwardMotion);
 
 			BlockPos newPos = entity.blockPosition().offset(new Vec3i((int) Math.round(deltaX), 8, (int) Math.round(deltaZ)));
-			entity.moveTo(newPos.getX(), newPos.getY(), newPos.getZ());
-
-			entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).ifPresent(cap -> {
-				cap.addBounce();
-			});
+			entity.teleportTo(newPos.getX(), newPos.getY(), newPos.getZ());
+			
+			entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).ifPresent(IBounceCapability::addBounce);
 		}
 		else {
 			super.bounce(entity, motionY);

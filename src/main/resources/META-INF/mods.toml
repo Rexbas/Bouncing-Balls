@@ -1,21 +1,19 @@
 modLoader="javafml"
-loaderVersion="[45,)"
-license="GNU Lesser General Public License v3.0"
+loaderVersion="${forge_version_range}"
+license="${mod_license}"
 issueTrackerURL="https://github.com/Rexbas/Bouncing-Balls/issues"
 logoFile="logo.png"
 [[mods]]
-modId="bouncingballs"
-version="${file.jarVersion}"
-displayName="Bouncing Balls"
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
 updateJSONURL="https://forge.curseupdate.com/246030/bouncingballs"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/bouncing-balls"
-authors="Rexbas"
-description='''
-Hop around the world with Bouncing Balls!
-'''
+authors="${mod_authors}"
+description='''${mod_description}'''
 [[dependencies.bouncingballs]]
     modId="bouncingballs_api"
     mandatory=true
-    versionRange="[4.0,)"
+    versionRange="${boucing_balls_api_version_range}"
     ordering="AFTER"
     side="BOTH"

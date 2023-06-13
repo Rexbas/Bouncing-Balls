@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:clay"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

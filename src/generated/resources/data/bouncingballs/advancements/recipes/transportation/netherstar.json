@@ -30,5 +30,6 @@
     "recipes": [
       "bouncingballs:netherstar"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

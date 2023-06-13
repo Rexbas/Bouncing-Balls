@@ -34,7 +34,7 @@ public class FireResistantBouncingBall extends BouncingBall {
 
 	@Override
 	public boolean onDamage(LivingEntity entity, DamageSource damageSource, float amount) {
-		if (!entity.level.isClientSide()) {
+		if (!entity.level().isClientSide()) {
 			if (entity.isInLava() && (damageSource.is(DamageTypes.LAVA) || damageSource.is(DamageTypes.ON_FIRE))) {
 				entity.clearFire();
 				return true;
