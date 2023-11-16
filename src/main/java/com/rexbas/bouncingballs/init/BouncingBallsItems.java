@@ -37,10 +37,10 @@ public class BouncingBallsItems {
 	public static final RegistryObject<Item> RED = ITEMS.register("red", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.RED_DYE).addFluid(FluidTags.WATER)));
 	public static final RegistryObject<Item> BLACK = ITEMS.register("black", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties().recipeItem(Items.BLACK_DYE).addFluid(FluidTags.WATER)));
 
-	public static final RegistryObject<Item> EGG = ITEMS.register("egg", () -> new EggBouncingBall());
-	public static final RegistryObject<Item> SNOW = ITEMS.register("snow", () -> new SnowBouncingBall());
-	public static final RegistryObject<Item> DYNAMITE = ITEMS.register("dynamite", () -> new DynamiteBouncingBall());
-	public static final RegistryObject<Item> SLIME = ITEMS.register("slime", () -> new SlimeBouncingBall());
+	public static final RegistryObject<Item> EGG = ITEMS.register("egg", EggBouncingBall::new);
+	public static final RegistryObject<Item> SNOW = ITEMS.register("snow", SnowBouncingBall::new);
+	public static final RegistryObject<Item> DYNAMITE = ITEMS.register("dynamite", DynamiteBouncingBall::new);
+	public static final RegistryObject<Item> SLIME = ITEMS.register("slime", SlimeBouncingBall::new);
 	public static final RegistryObject<Item> CLAY = ITEMS.register("clay", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(150, Items.CLAY_BALL, 0.6f, 0.75f, 10f, 0.4f).recipeItem(Items.CLAY_BALL).addFluid(FluidTags.WATER)));
 	public static final RegistryObject<Item> REDSTONE = ITEMS.register("redstone", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(150, Items.REDSTONE, 0.6f, 0.75f, 10f, 0.4f).recipeItem(Items.REDSTONE).addFluid(FluidTags.WATER)));
 	public static final RegistryObject<Item> GLOWSTONE = ITEMS.register("glowstone", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(150, Items.GLOWSTONE_DUST, 0.6f, 0.75f, 10f, 0.4f).recipeItem(Items.GLOWSTONE_DUST).addFluid(FluidTags.WATER)));
@@ -48,8 +48,8 @@ public class BouncingBallsItems {
 	public static final RegistryObject<Item> GOLD = ITEMS.register("gold", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(250, Items.GOLD_INGOT, 0.75f, 0.8f, 10f, 0.3f).recipeItem(Items.GOLD_INGOT)));
 	public static final RegistryObject<Item> IRON = ITEMS.register("iron", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(300, Items.IRON_INGOT, 0.9f, 0.9f, 10f, 0.25f).recipeItem(Items.IRON_INGOT)));
 	public static final RegistryObject<Item> DIAMOND = ITEMS.register("diamond", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(400, Items.DIAMOND, 1.0f, 1.0f, 10f, 0.2f).recipeItem(Items.DIAMOND)));
-	public static final RegistryObject<Item> PRISMARINE = ITEMS.register("prismarine", () -> new PrismarineBouncingBall());
-	public static final RegistryObject<Item> ENDER = ITEMS.register("ender", () -> new EnderBouncingBall());
+	public static final RegistryObject<Item> PRISMARINE = ITEMS.register("prismarine", PrismarineBouncingBall::new);
+	public static final RegistryObject<Item> ENDER = ITEMS.register("ender", EnderBouncingBall::new);
 	public static final RegistryObject<Item> OBSIDIAN = ITEMS.register("obsidian", () -> new FireResistantBouncingBall(new BouncingBall.Properties(500, Item.BY_BLOCK.get(Blocks.OBSIDIAN), 1f, 0.75f, 10f, 0.4f).recipeItem(Items.OBSIDIAN).addFluid(FluidTags.LAVA)));
 	public static final RegistryObject<Item> QUARTZ = ITEMS.register("quartz", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(550, Items.QUARTZ, 1.0f, 0.8f, 10f, 0.2f).recipeItem(Items.QUARTZ)));
 	public static final RegistryObject<Item> EMERALD = ITEMS.register("emerald", () -> new BouncingBall(new Item.Properties(), new BouncingBall.Properties(600, Items.EMERALD, 1.25f, 1.5f, 16f, 0.1f).recipeItem(Items.EMERALD)));
