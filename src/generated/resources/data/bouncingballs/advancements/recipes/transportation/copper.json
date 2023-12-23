@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:copper"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:dynamite"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:quartz"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

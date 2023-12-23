@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:obsidian"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

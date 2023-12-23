@@ -1,7 +1,7 @@
 package com.rexbas.bouncingballs.item;
 
-import com.rexbas.bouncingballs.api.capability.BounceCapability;
-import com.rexbas.bouncingballs.api.capability.IBounceCapability;
+import com.rexbas.bouncingballs.api.BouncingBallsAPI;
+import com.rexbas.bouncingballs.api.attachment.BounceData;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 import com.rexbas.bouncingballs.api.item.IBouncingBall;
 import net.minecraft.core.BlockPos;
@@ -47,16 +47,12 @@ public class EnderBouncingBall extends BouncingBall {
 
 	@Override
 	public boolean canBounce(LivingEntity entity) {
-		IBounceCapability cap = entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).orElse(null);
-		if (cap != null) {
-			float yaw = entity.getYRot();
-			float pitch = entity.getXRot();
-			double deltaX = (double) (-Mth.sin(yaw / 180.0F * (float) Math.PI) * Mth.cos(pitch / 180.0F * (float) Math.PI) * 5);
-			double deltaZ = (double) (Mth.cos(yaw / 180.0F * (float) Math.PI) * Mth.cos(pitch / 180.0F * (float) Math.PI) * 5);
-			BlockPos newPos = entity.blockPosition().offset(new Vec3i((int) Math.round(deltaX), 8, (int) Math.round(deltaZ)));
-			return super.canBounce(entity) && entity.level().getBlockState(newPos).isAir() && entity.level().getBlockState(newPos.above()).isAir();
-		}
-		return false;
+		float yaw = entity.getYRot();
+		float pitch = entity.getXRot();
+		double deltaX = (double) (-Mth.sin(yaw / 180.0F * (float) Math.PI) * Mth.cos(pitch / 180.0F * (float) Math.PI) * 5);
+		double deltaZ = (double) (Mth.cos(yaw / 180.0F * (float) Math.PI) * Mth.cos(pitch / 180.0F * (float) Math.PI) * 5);
+		BlockPos newPos = entity.blockPosition().offset(new Vec3i((int) Math.round(deltaX), 8, (int) Math.round(deltaZ)));
+		return super.canBounce(entity) && entity.level().getBlockState(newPos).isAir() && entity.level().getBlockState(newPos.above()).isAir();
 	}
 
 	@Override
@@ -70,8 +66,9 @@ public class EnderBouncingBall extends BouncingBall {
 
 			BlockPos newPos = entity.blockPosition().offset(new Vec3i((int) Math.round(deltaX), 8, (int) Math.round(deltaZ)));
 			entity.teleportTo(newPos.getX(), newPos.getY(), newPos.getZ());
-			
-			entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).ifPresent(IBounceCapability::addBounce);
+
+			BounceData bounceData = entity.getData(BouncingBallsAPI.AttachmentTypes.BOUNCE_DATA);
+			bounceData.addBounce();
 		}
 		else {
 			super.bounce(entity, motionY);

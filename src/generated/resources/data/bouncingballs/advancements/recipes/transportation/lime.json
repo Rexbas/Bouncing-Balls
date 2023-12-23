@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:lime"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

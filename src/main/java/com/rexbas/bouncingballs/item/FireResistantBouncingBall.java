@@ -1,7 +1,7 @@
 package com.rexbas.bouncingballs.item;
 
-import com.rexbas.bouncingballs.api.capability.BounceCapability;
-import com.rexbas.bouncingballs.api.capability.IBounceCapability;
+import com.rexbas.bouncingballs.api.BouncingBallsAPI;
+import com.rexbas.bouncingballs.api.attachment.BounceData;
 import com.rexbas.bouncingballs.api.item.BouncingBall;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -25,11 +25,8 @@ public class FireResistantBouncingBall extends BouncingBall {
 
 	@Override
 	public boolean shouldSitOnBall(LivingEntity entity) {
-		IBounceCapability cap = entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).orElse(null);
-		if (cap != null) {
-			return super.shouldSitOnBall(entity) || entity.isInLava() || cap.getLastFluid() == FluidTags.LAVA;
-		}
-		return false;
+		BounceData bounceData = entity.getData(BouncingBallsAPI.AttachmentTypes.BOUNCE_DATA);
+		return super.shouldSitOnBall(entity) || entity.isInLava() || bounceData.getLastFluid() == FluidTags.LAVA;
 	}
 
 	@Override
@@ -39,9 +36,9 @@ public class FireResistantBouncingBall extends BouncingBall {
 				entity.clearFire();
 				return true;
 			}
-			IBounceCapability cap = entity.getCapability(BounceCapability.BOUNCE_CAPABILITY).orElse(null);
-			if (cap != null && (damageSource.is(DamageTypes.IN_FIRE) || damageSource.is(DamageTypes.ON_FIRE) || damageSource.is(DamageTypes.HOT_FLOOR))) {
-				if (cap.getConsecutiveBounces() > 0 || this.shouldSitOnBall(entity)) {
+			BounceData bounceData = entity.getData(BouncingBallsAPI.AttachmentTypes.BOUNCE_DATA);
+			if (damageSource.is(DamageTypes.IN_FIRE) || damageSource.is(DamageTypes.ON_FIRE) || damageSource.is(DamageTypes.HOT_FLOOR)) {
+				if (bounceData.getConsecutiveBounces() > 0 || this.shouldSitOnBall(entity)) {
 					entity.clearFire();
 					return true;
 				}

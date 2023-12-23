@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:blue"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

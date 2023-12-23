@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:slime"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

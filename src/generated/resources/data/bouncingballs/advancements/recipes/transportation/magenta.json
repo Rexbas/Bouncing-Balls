@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:magenta"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

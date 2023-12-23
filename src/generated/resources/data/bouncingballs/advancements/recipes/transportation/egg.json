@@ -30,6 +30,5 @@
     "recipes": [
       "bouncingballs:egg"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
